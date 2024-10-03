@@ -1,0 +1,47 @@
+= Commands =
+	[[brew]], [[cut]], [[find]], [[man]], [[pdb]], [[pdfgrep]], [[printf]],
+	[[screen]], [[sed]], [[venv]], [[vim]], [[whence]], [[zsh]]
+
+	??btop, ??rmlint, ??ncdu
+
+	hash <CMD>    # to force macOS to re-evaluate which CMD it will use
+                    (required when macOS has cached an old location for <CMD>
+                    and does not respect $PATH order)
+                  # hash -d <CMD> to remove old command
+                  # hash -p <PATH> <CMD> to manually add command
+
+	shasum        # calculate shasum of file/text. can do sha256
+                    to sha256 a web page use the following command:
+                    curl http://classics.mit.edu/Plato/meno.html | shasum -a 256
+
+	file          # identify the type and encoding (e.g. utf-8) of a file
+
+	pngquant      # compress png
+    
+	ps, pkill, kill, fg, bg %J, ^z
+	stat (~=readlink); sort, uniq, tail
+	rsync, rmlint, ncdu
+ 
+	curl -O URL, wget URL
+	
+	afinfo, caffeinate, *yt-dlp*
+	
+	open -a APPLICATION --args arguments <...>
+	
+== for zsh scripts ==
+	xargs         # convert output to arguments to next command
+
+	read          # ???? remember this exists
+                    see ~w/prog/01.zshTt/man for an example use
+
+	vared         # potentially more flexible version of read for zsh
+
+== PDF manipulation ==
+    pdfcat *      # function in .zshenv wrapper for ghostscript command
+				  
+    pdfcompress * # function in .zshenv to compress pdf files
+                    wrapper for ghostscript command
+	
+    pdftocio      # generate/manipulate pdf tables of contents
+                    this is a python module: <q>pip install pdf.tocgen<q>
+                    see https://github.com/Krasjet/pdf.tocgen

@@ -1,0 +1,33 @@
+= COMMAND FORM: =
+    print [-n -v ] [-f FORMAT] arg ...
+    printf [ -v name ] format [ arg ... ]
+
+== EXAMPLE: ==
+    printf 'a%f10.2b' $((11/3) )
+
+== OPTIONS ==
+	-v PARAM    # store the printed string into PARAM - do NOT print on stdout
+	-s          # print to history instead of stdout
+	-P          # ONLY for *print* do escape expansion (e.g. "%F{140}colors%f" works)
+	-n          # ONLY for *print* - do not print newline at end of string
+                # *printf* only puts newline if \n at end of format string
+
+== FORMAT STRING SYNTAX ==
+    %[flags][width][.precision]type
+precision is the maximum string length for %.Ns
+
+=== types ===
+	s    # string
+	d    # decimal integer 
+	e    # scientific notation
+	g    # normal or scientific whichever shortest
+	f    # float
+	o    # octal
+	a    # hexadecimal
+
+=== flags ===
+  -        # left justify within WIDTH
+	+        # show +/- before number
+	SPACE    # space before +ve, - before -ve 
+	0        # prepad with 0s to fill WIDTH
+	'        # use commas i.e. 1,000,000

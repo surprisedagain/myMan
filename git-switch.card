@@ -1,0 +1,17 @@
+= git switch =
+== COMMAND FORM ==
+    git switch [-c|-d] <BRANCH>
+
+== EXAMPLES ==
+    git switch main
+    git switch -d 0ff2654
+
+== COMMON OPTIONS ==
+	git switch <BRANCH>    # point HEAD to <BRANCH> and rewrite WT to match
+
+	-c <BRANCH>            # Create new BRANCH at current HEAD
+
+	-c <BRANCH> <OLD>      # create new <BRANCH> at <OLD> branch
+                             and point HEAD at it and rewrite WT
+
+	-d <COMMIT>            # point HEAD to COMMIT (produces detached head)

@@ -1,0 +1,77 @@
+= GIT commands =
+git add <PATH>     # add PATH to index (also register deletion with index)
+git add -u         # update all tracked files (previously staged/committed)
+                     in index from WT (recursive)
+git add -A         # stage ALL changes in WT - recursive
+git add .          # add all files in CD to staging area   
+                          recursive, no deletes staged
+
+git rm <file>             # remove file from both index and WT
+git rm --cached <file>    # remove file from index without deleting in WT
+
+[[git-commit]]            # make new commit from INDEX
+git commit -a         # commit all tracked files (roughly:files in prev commits)
+git commit --amend    # effectively replaces the last commit with the new commit
+                        can just replace message or replace prev files
+
+[[git-switch]] <BRANCH>       # point HEAD to BRANCH and rewrite WT to match
+git switch -c <BRANCH>    # create new BRANCH at current HEAD
+git switch -c <BRANCH> <OLDBRANCH>
+                          # create new branch <BRANCH> at <OLDBRANCH>
+                            and point HEAD at it and rewrite WT
+git switch -d <COMMIT>    # point HEAD to COMMIT (produces detached head)
+git branch --show-current    # print name of current branch
+
+[[git-merge]] <OTHERBRANCH>    # merge <OTHERBRANCH> into the current branch
+git merge --abort          # abort attempt to resolve merge conflict
+git merge --no-ff <OB>     # no fast forward - <OtherBr> is not flattened into
+
+[[git-restore]] <PATH>    # restore <PATH> from INDEX ('.' will restore directory
+                        ':/' will restore entire tree - ugly magic!!)
+git restore -s <SOURCE> <PATH>
+                      # - restore <PATH> in WT from <SOURCE> (commit/branch)
+git restore --staged <F>
+                      # restore <F> in INDEX from HEAD
+
+git show <COMMIT>:<PATH>    # print <PATH> from <COMMIT>
+                              redirect to file to save under new name
+
+[[git-diff]] [<COMMIT>] [<PATH>]
+                        # diff WD with COMMIT/(def: index) (just <PATH> if given)
+git diff --cached [<COMMIT>]
+                        # diff INDEX with <COMMIT> (default: HEAD)
+
+= REMOTES =
+git clone <URL/SSH>     # get FULL repo
+git clone --filter=blob:none <URL/SSH>
+                        # pull down tree but no contents to start
+                          will pull down blobs as needed many common ops cheap
+
+git remote add <REMOTE> <URL/SSH>
+                        # - often used to add the original source of a fork
+                        # - as a second upstream remote
+git remote remove <REMOTE>
+                        # - what it says on the tin
+
+git branch -u <UPSTREAM> [<BRANCH>]
+                        # make <branch> at remote <upstream>
+                          the tracking branch of local <branch>
+                          default current (HEAD->) branch
+
+git pull                # a git command with almost no (normal use) options
+                          pull everything merge if required (not normal)
+
+git fetch <REMOTE> [<BRANCH>]
+                        # download REMOTE commits on <branch>
+                          default all REMOTE branches
+                          commonly followed by a merge
+
+git push                # push current branch to origin(/branches remote)
+                          if it exists else error
+git push <REMOTE> [<BRANCH>]
+                        # push BRANCH to origin - default current/HEAD branch
+git push <REMOTE> :     # push all matching branches to origin(who makes up :!?)
+
+=== NOTES/GLOSSARY ===
+WT = working tree - the directory tree rooted in the main directory
+index == stage ~= staged : the files slated to be in the next commit

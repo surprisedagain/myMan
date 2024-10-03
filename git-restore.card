@@ -1,0 +1,26 @@
+= COMMAND FORM: =
+    git restore [-s <SOURCE>] [--staged] <PATH>
+
+== EXAMPLES ==
+    git restore importantfile.card
+    git restore -s 0ff742 path/to/directory
+    git restore :/
+
+If not specified, the default restore source for the working tree is the index,
+and the default restore source for the index is HEAD. When both --staged and
+--worktree are specified, --source must also be specified.
+
+== COMMON OPERATIONS ==
+    git restore <PATH>  # restore PATH from INDEX ('.' restores directory)
+
+    git restore :/      # ':/' restores entire tree (ugly magic!!)
+
+    git restore -s <COMMIT> <PATH>
+                        # restore PATH in WT from <COMMIT>
+
+    git restore --staged <PATH>
+                        # restore PATH in INDEX from HEAD
+
+    git show <COMMIT>:PATH
+                        # print PATH from COMMIT
+                          why? redirect to <NAME> to save as NAME

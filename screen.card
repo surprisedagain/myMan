@@ -1,0 +1,22 @@
+= SCREEN =
+    screen [-ls] 
+
+== OPTIONS ==
+-ls
+-r
+-wipe
+
+
+= CONTROLS =
+	^a \t    # move focus to next region
+	^a c     # create new window and switch current region to it
+	^a '     # will prompt for number/name of window to switch to
+	^a "     # list all windows and then prompt for selection to switch to
+	^a S     # split a new region (below)
+	^a |     # split a new region (right)
+	^a Q     # delete all regions but the current one (windows still exist)
+	^a X     # kill the current region
+	^a ^\    # kill all windows and exit
+
+== customised ==
+hjkl bound to left up down right (vim keys)

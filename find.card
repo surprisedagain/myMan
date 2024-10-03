@@ -1,0 +1,33 @@
+= find =
+== COMMAND FORM ==
+    find [-L-E] <BASEPATH> ... [criteria]
+
+== EXAMPLE ==
+    find -not ????
+
+== OPTIONS ==
+	-[i]name <PAT>     # <PAT> may contain glob style wildcards * ? [xyz]
+	-[i]path <PAT>     # as per -name but whole path is tested for match
+	-[i]regex <PAT>    # regex BRE by default. -E makes ERE - see [[re]]
+	-depth <n>         # depth of file from start path is exactly n
+	-mindepth <n>        in base directory = depth 1
+	-maxdepth <n>
+	
+	-atime <n>[smhdw]    # accessed less/exact/more than -n/n/+n time units ago
+	-mtime <n>[smhdw]    # modified (contents or permissions changed)
+	-ctime <n>[smhdw]    # changed (contents changed)
+
+	-print0    # if output is piped to xargs this fixes separator
+                 use xargs -0 flag
+	-L         # follow symlinks (default is to use links properties)
+
+	-exec <CMD> [arg ...] ;
+               # '{}' is path to current file. ';' is non-negotiable
+	-execdir
+	-ok
+	-okdir
+	
+	-samefile <FILE>    # show all hardlinks to <FILE>
+	
+	-or
+	-not

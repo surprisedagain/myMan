@@ -1,0 +1,46 @@
+!!!!UNDER DEVELOPMENT!!!!!
+= COMMAND FORM: =
+    git grep [-OPTIONS] [--cached] pattern [COMMIT] [--] PATH
+
+== EXAMPLES: ==
+    git grep 04b72f09 onefile.card
+    git grep --cached file
+
+== MAGIC ==
+    .()*+?{}[]|^$ are MAGIC
+git config --global grep.patternType perl
+HAS BEEN SET so that regex used are pcre - lazy quantifiers (?) work
+    
+= OPTIONS: =
+    -C5     # 5 lines of Context before and after matching line
+    -c      # only the Count matches is printed
+    -H      # print filename at start of matching line (default)
+    -h      # do NOT print filename at start of matching line
+    -n      # print line number before matching line (after filename if -H)
+    -o      # only print the matching part of the line
+    -l      # _only_ print names of files containing matches
+    -L      # only print names of files NOT containing matches
+    -i      # ignore case
+    -a      # force treat as ascii - something about binary files?
+    -F      # fixed strings
+
+== PCRE shorthands ==
+\w word constituent.
+\W non-word constituent.
+
+\d digit
+\D non-digit
+
+\s whitespace
+\S non-whitespace
+
+\b edge of a word.
+\B not edge of a word.
+
+=== DOES NOT HAVE ===
+\< or \>
+
+== further resources ==
+for more regex syntax see [[re]]
+or
+man pcresyntax

@@ -1,0 +1,14 @@
+= whence =
+== COMMAND FORM: ==
+    whence [-v] [-w] [-f] <CMD>
+
+prints the path to the CMD which the shell would execute when <CMD> typed at
+prompt.
+
+== EXAMPLE: ==
+    whence -v todo
+
+= OPTIONS: =
+	-v    # makes output verbose - shows where shell scripts defined
+	-w    # output of form "<CMD>: <TYPE>"
+	-f    # show code of shellscript

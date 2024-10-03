@@ -1,0 +1,21 @@
+= git log =
+== COMMAND FORM ==
+    git log [-OPTIONS] <COMMIT_RANGE> [--] PATHS
+    git log [-OPTIONS] <COMMIT>
+
+Show the log of the specified commits. Show the history of the files on the
+PATHS (i.e. show only those commits where those files were altered - merges can
+make this tricky and there are rules about what portion of history is shown)
+
+== EXAMPLES ==
+    git log -1 docs/wrongDouble.png     # show last commit where file changed
+    git log --oneline main~1..tt 
+    git log <FROM_COMMIT>..<TO_COMMIT>  # FROM must be older. FROM not in TO in
+    git log HEAD~1..CURRENT             # HEAD~1 == 1 before HEAD
+
+= OPTIONS =
+    -<n>        # n logs before and including <BRANCH/COMMIT>
+    --oneline   # just abbreviated SHA and top line of message
+    --stat      # for each modified/created file show a graph of how many
+                  lines have been added/changed/removed
+    

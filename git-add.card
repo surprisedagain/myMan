@@ -1,0 +1,17 @@
+COMMAND FORM:
+    git add [-u|-A] [PATH]
+
+EXAMPLES:
+    git add path/to/directory
+    git add path/to/file
+
+COMMON OPERATIONS:
+    git add <PATH>  # add PATH to index (also register deletion with index)
+
+    git add -u      # update all tracked files (previously staged/committed)
+                    # in index from WT (recursive)
+
+    git add -A      # stage ALL changes in WT - recursive
+
+    git add .       # add all files in . to staging area   
+                    # recursive, deletes may be staged in latest versions

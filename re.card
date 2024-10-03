@@ -1,0 +1,53 @@
+= RegEx Syntax: =
+[[grep]] is aliased to pcregrep, [[sed]] is aliased to gsed
+
+= regex flavours =
+Perl~=pcregrep~=python != gsed
+gsed & ERE DO NOT have lazy qualifiers - *? +?
+gsed & ERE DO have groups; ^(.*)pad\1
+
+[[pdfgrep]] is ERE by default, -P flag makes pcre
+
+== syntax reminder ==
+pcre/ERE: .()*+?{}[]|^$ are MAGIC when UNESCAPED
+gsed: only .*[]^$ are MAGIC by default (-E option makes ERE)
+    
+=== precedence ===
+repetition > concatenation > alternation
+
+=== classes ===
+[kjh] OR [a-z] any of range
+[^kjh] any not in range
+
+=== quantifiers ===
+? + *        # ? = {0,1}   + = {1,}   * = {0,}
+{n}  n times
+{n,} n or more
+{n, m} n to m times (inclusive)
+
+question mark after quantifier makes non-greedy
+{n,m}? ?? +? *?
+
+== class shorthands ==
+\w    # word constituent.
+\W    # non-word constituent.
+\s    # whitespace
+\S    # non-whitespace
+
+=== PCRE ONLY shorthands ===
+\d    # digit
+\D    # non-digit
+\b    # edge of a word.
+\B    # not edge of a word.
+\R    # any newline sequence (CR|LF|CRLF)
+
+*man pcresyntax* for full description
+
+=== ERE ONLY shorthands (GSED) ===
+\< \> begin/end of word
+
+== PCRE lookahead/behind ==
+(?=...)         positive look ahead
+(?!...)         negative look ahead
+(?<=...)        positive look behind
+(?<!...)        negative look behind

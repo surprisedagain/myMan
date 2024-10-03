@@ -1,0 +1,11 @@
+= COMMAND NAME =
+== COMMAND FORM ==
+    man [-f -k -a] [SECTION_NUMBER] <COMMAND_NAME>
+
+== EXAMPLE ==
+    man -k '\<print\>'
+
+== OPTIONS ==
+	-f     # search manpage titles and short descriptions for <COMMAND_NAME>
+	-k     # search manpages for <COMMAND_NAME> treated as BRE RegEx
+	-a     # list All the manpages for <COMMAND_NAME>

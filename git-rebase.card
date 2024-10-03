@@ -1,0 +1,9 @@
+git rebase -i HEAD~N
+
+prepare to squash the previous N commits together !!
+
+
+may need to follow with:
+    git push origin <BRANCH> --force
+
+in order to rewrite history at the remote as well !!

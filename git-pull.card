@@ -1,0 +1,14 @@
+COMMAND FORM:
+    git pull
+
+EXAMPLES:
+    git pull
+    git fetch origin main
+
+COMMON OPERATIONS:
+    git pull        # pull everything merge if required
+                    # almost dangerously easy with no option
+
+    git fetch <REMOTE> [<BRANCH>]
+                    # download REMOTE commits on BRANCH
+                    # Default all REMOTE branches

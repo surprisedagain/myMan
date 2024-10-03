@@ -1,0 +1,21 @@
+= Python DeBugger =
+breakpoint()        # My preferred method of entering pdb - put this line in code
+
+s[tep]              # step into functions
+n[ext]              # step over functions - move to next line
+r[eturn]            # continue until function returns (step up sorta)
+c[ontinue]          # continue until next breakpoint
+q[uit]
+
+a[rgs]              # print args of current function
+l[ist]              # show 11 lines of code around current line
+ll                  # show complete code for current function
+w[here]             # stack trace, who called who to call the current function
+display <expr>      # show value of <expr> if changed each time enter current frame (func?)
+p <expr>            # print
+pp <expr>           # pretty print
+
+b[reak] [<f>:]<l> ,<cond>
+                    # break at line <l> in file <f> if <cond> is true
+
+break <funcname>    # break at first line inside <funcname>

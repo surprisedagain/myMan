@@ -1,0 +1,59 @@
+= sed =
+== COMMAND FORM ==
+    sed [-OPTIONS] COMMAND FILE . . .
+*note: sed is aliased to gsed. This cheatsheet is for gsed*
+
+== EXAMPLE: ==
+    sed -E -e 's/regex/replace/g' filename[s]
+
+== MAGIC ==
+=== always MAGIC ===
+    . * [ ] ^ $
+
+=== ONLY MAGIC with -E ===
+    + ? | ( ) { }
+
+== FLAVOUR ==
+=== DOES NOT HAVE ===
+*? +? non-greedy
+\d \D    # [ [:digit:] ] or [0-9] will work instead
+
+=== HAS ===
+\w \W \< \> \s \S
+groups \1, etc., but no lookahead
+& is the entire match must \& to include literal & in replacement
+
+[[re]] for Extended RegEx cheatsheet
+
+== OPTIONS ==
+    -E          # Extended regex - almost always desired
+    -n          # No-print - useful with p command
+    -i[SUFFIX]  # In-place make backup if SUFFIX supplied (backup has orig vers)
+
+== COMMANDS ==
+*most used:*
+	s/pat/rep/<FLAGS>
+    <FLAGS>: g = all / 1 = 1st match (2,3...n) / I ignore case
+
+more generally:
+	<RANGE> <COMMAND>
+
+where:
+    <RANGE> ~= 4 | 1,5 | $ (last line)
+                 | /pattern/ | /pattern1/,/pattern2/ (from p1 to p2 inclusive)
+                 | /pattern/,+n (n lines after pattern inclusive)
+        no range = all lines, ! immediately after range NEGATES e.g. /fred/!d
+and        
+    <COMMAND> =
+        p print             # combine with -n option to print just lines in range
+        w <FILENAME>
+        d delete
+        i insert line before
+        a append line after
+        y/old/new/           # transliterate
+        s/pat/rep/<FLAGS>    # this can also work just on range
+        c\This will replace original line
+        c\This will replace original line\nand add this line after
+
+== online resources ==
+command reference: https://alexharv074.github.io/2019/04/16/a-sed-tutorial-and-reference.html

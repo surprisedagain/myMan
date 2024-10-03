@@ -1,0 +1,57 @@
+= grep / pdfgrep =
+== COMMAND FORM ==
+    grep [-OPTIONS] <PATTERN> <FILE> ...
+    pdfgrep [-OPTIONS] <PATTERN> <FILE> ...
+
+== EXAMPLE ==
+    grep 'atom|[any]+|^(maybe)?$' directory/*
+
+=== note ===
+	grep is aliased to pcregrep !!!
+	? DOES make lazy
+
+== OPTIONS ==
+    -F      # fixed strings
+    -i      # ignore case
+    -C5     # 5 lines of Context before and after matching line
+    -c      # only the Count of matches is printed
+    -H      # print filename at start of matching line (default)
+    -h      # do NOT print filename at start of matching line
+    -n      # print line number before matching line (after filename if -H)
+    -o      # only print the matching part of the line
+    -l      # _only_ print names of files containing matches
+    -L      # only print names of files NOT containing matches
+    -v      # invert match - show non-matching lines
+    -a      # force treat as ascii - something about binary files?
+    -r        # recursive if passed directory recurse into it
+
+== pdfgrep only ==
+    -P      # makes pcre
+    -n      # print page number before matching line
+
+== MAGIC ==
+.()*+?{}[]|^$ are MAGIC
+
+== PCRE ONLY shorthands ==
+\w word constituent.
+\W non-word constituent.
+
+\d digit
+\D non-digit
+
+\s whitespace
+\S non-whitespace
+
+\b edge of a word.
+\B not edge of a word.
+
+=== PCRE does NOT have ===
+\< or \>
+
+== PCRE lookahead/behind ==
+(?=...)         positive look ahead
+(?!...)         negative look ahead
+(?<=...)        positive look behind
+(?<!...)        negative look behind
+
+for more regex syntax see [[re]]

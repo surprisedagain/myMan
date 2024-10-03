@@ -1,0 +1,147 @@
+= VIM =
+[[#COMMANDS]], [[#movements]], [[#selections]]
+[[#Register specials/tricks]]
+[[#RegEx]], [[#magic]]
+
+== COMMANDS ==
+i I a A o O c C d D y Y p P
+gi              # gOTO iNSERT (move after last inserted character) start insert
+ctrl(g)         # show filename
+g-ctrl(g)       # quick wordcount and cursor position
+gf              # gOTO fILE under cursor (very cool)
+do              # VIMDIFF - obtain difference FROM other file
+dp              # VIMDIFF - push difference TO other file
+z=              # spell correct word under cursor
+g~              # switch case on MOVEMENT
+gu / gU         # lower / upper case on MOVEMENT
+
+:cw             # open quickfixwindow
+:gr[ep]         # matches will populate quickfix - uses pcregrep! yay! see [[re]]
+:ret[ab]        # replace tabs with spaces over range
+:R              # nathan defined retab
+:term[inal]     # !!!!!! open terminal
+    :mterm :fterm
+:find **/filename*
+
+zf[old], zo[pen], zc[lose], zd[elete]
+zR              # open ALL folds
+zM              # close ALL folds
+:set fdc=1      # show folds in foldcolumn
+
+:wa             # Write All
+:ls
+:b[uffer]<n>
+:reg[isters]
+:ri[ght]        # right justify text - very useful to keep code 80 width
+:diffs[plit]    # my normal way into vimdiff
+:vsp <filename>
+:helpg[rep]     # search help files !!!!!!!!
+
+
+=== Movements ===
+w b e | ^ $ f t ; , 'm `m
+{ } ( )
+
+<n>gg <n>G    # gOTO line <n> - gg default 1 G default $
+<n>|          # column <n> (default 0) in current line
+[w ]w         # next/prev instance of word under cursor
+[s ]s         # prev/next misspelt word
+[\ ]\         # move to prev/next line with character in current cursor column
+[- ]-         # scroll maximum keeping current line visible
+[]            # scroll cursor line to middle of window
+[c ]c         # VIMDIFF prev/next change
+
+/pattern/-2     # matching line - 2 lines +2 also good
+/pattern/s-2    # sTART character of match - 2 characters
+/pattern/e5     # eND character of match + 5 characters e+5 also good
+/pattern1/;/pattern2
+                # find first occurence of pattern2 after pattern1 
+
+=== Selections ===
+i( | a(    # inside | all [i.e. including] of parentheses containing cursor
+i{ | a{    # inside | all of braces containing cursor
+iw | aw    # inside | all (with whitespace as hoped) containing cursor
+is | as    # inside | all of sentence containing cursor
+ip | ap    # inside | all of paragraph containing cursor
+it | at    # inside | all html tag containing cursor
+V          # select whole line - can [count]V
+
+== Register specials/tricks==
+<ctrl-r><ctrl-w>      # copy word under cursor.  often -> commandline
+<ctrl-r><REGISTER>    # insert mode - paste contents of register
+
+"R            # append to register r
+"%            # current <filename>
+"0            # last yanked text
+"1 - "9       # stack of deleted/changed text
+"-            # last small (less than a whole line) deleted or changed text
+@r            # execute register r
+
+= RegEx =
+=== magic ===
+MAGIC:          .*^$[]
+REQUIRES \ :    \+ \? \( \) \| \{3,7} \< \>
+
+==== magic in replacement ====
+    \r \t & \0 \1 .. \9 \u \U \l \L \E
+    &           # whole of match (== \0)           
+    \l | \u     # next character lowercase | uppercase
+    \L | \U     # all next lowercase | uppercase until \E
+
+=== character classes and flags ===
+\_s \s \S \d \D \w \W \< \> \l \L \u \U
+\_. matches any character including end of line
+\_<x> matches <x> character type or end of line
+
+\{-}        # lazy quantifier   # \{-n,m} n to m as few as possible; \{-n,}
+\c          # force case insensitive    
+\C          # force case sensitive    
+\@=         # lookahead - this\(that\)\@= matches only "this" in "thisthat"
+\@!         # negative lookahead
+\u \U       # uppercase | not uppercase
+\l \L       # lowercase | not lowercase
+
+== Substitute ==
+:<RANGE> s/pattern/replacement/<FLAGS>
+
+==== Range Examples ====
+    4,7 | 4;+3 | 't,$-5 | .+2,27 | /pat/,/pat2/-1 | ?pat?;+5 | %
+    
+==== Flag Examples ====
+    c    # confirm each action(e.g. replacement)
+    g    # all occurences in each line not just first 
+    i    # (i)gnore case
+    I    # DONT Ignore case (i.e. case sensitive)
+    n    # report number of matches - DO NOT MAKE SUBSTITUTION
+
+=== Other Ranged Ex Commands ===
+:<r>g/match_pattern/command     # e.g. g/pattern/normal Ifred
+
+:<r>d [x]       # delete to register x
+:<r> norm i#    # insert # at start of each line
+:<r>>           # shift right
+:<r><           # shift left
+:<r>sort        # sort range/selection
+
+:<r>m5          # move (each line) 5 down
+:<r>m$          # move (each line) to the bottom of the file -
+:t              # copy line to destination (like move)
+
+*:help ex-cmd-index*
+
+== Settings ==
+:set textwidth=0 :set tw=80
+:set expandtab   :set noet
+
+== Vimwiki ==
+:B            # insert backlinks
+:S <regex>    # search and lopen
+:T <regex>    # show list of matching tags in location list
+and ((footnotes)) are all defined in ~/.vim/after/ftplugin/vimwiki.vim
+
+also modified ~/.vim/bundle/vimwiki/plugin/vimwiki.vim:129
+and ~/.vim/bundle/vimwiki/syntax/vimwiki.vim:386
+to coerce italics to display as underlined since firacode font has no italics :(
+
+completion is  <Ctrl-c> which is an alias for <Ctrl-x><Ctrl-o>
+-> <Ctrl-o> or <- <Ctrl-p> to cycle through options

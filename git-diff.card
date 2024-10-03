@@ -1,0 +1,41 @@
+= COMMAND FORM: =
+    git diff [--cached] [COMMIT] [PATH]
+    git difftool [--cached] [COMMIT] <PATH>
+    
+== EXAMPLES: ==
+	git diff
+	git diff 04b72f09 onefile.card
+	git diff --cached HEAD~1 filename
+	git diff BRANCHNAME filename
+	git diff adirectory
+
+	git difftool HEAD~1 collapse.card
+
+=== COMMON OPTIONS ===
+	git diff [<COMMIT>] [<PATH>]
+                            # diff COMMIT/PATH with WT/PATH
+                              Default COMMIT="INDEX" (=staged)
+                              Default PATH="whole WT"
+
+	--cached [COMMIT]       # diff INDEX with COMMIT (default COMMIT=HEAD)
+                              Shows what will be changed by commiting right now
+
+	--name-only A..B        # lists all files that have changed in B since A
+
+== INTERPRETING OUTPUT ==
+    --- a/docs/referenceTable.sed
+    +++ b/docs/referenceTable.sed
+    @@ -31,4 +31,3 @@ s/href="[^"]*zz.texts[^"]*\/russell1914\.knowledgeOfExternalWorld\.pdf"/href="ht
+     context
+     context
+     context
+    - old line
+    + new line
+     context
+     context
+     context
+--- a is the older version (by default the version in the index)
++++ b is the newer version (by default in WT --cached makes it the index version)
+@@ -startline,offset +startline,offset @@ Hunk descriptor (guess at significant recent line)
+offset starts counting at 1
+by default git diff gives three lines of context around changes

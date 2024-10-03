@@ -1,0 +1,17 @@
+= COMMAND: =
+    python<VERSION> -m venv /path/to/venv
+
+This creates the venv WITHOUT STARTING to use it!
+
+== EXAMPLE: ==
+    python<VERSION> -m venv ~/.venv
+
+== OPTIONS: ==
+    --prompt=<PROMPT>
+    --upgrade      # to use the version of python through which venv was invoked
+
+= TO USE the venv =
+    source <VENV>/bin/activate
+    
+= TO STOP USING the venv =
+    deactivate

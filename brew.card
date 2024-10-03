@@ -1,0 +1,14 @@
+= COMMAND FORM: =
+    brew <COMMAND> [OPTIONS] [PACKAGE]
+
+= COMMANDS: =
+	brew upgrade        # upgrades all packages
+	brew update         # updates brew itself
+	brew ls [PACKAGE]
+	brew leaves         # list all packages that have no dependents
+	brew outdated       # show all updateable formulae - informative
+	brew install <PACKAGE>
+	brew uninstall <PACKAGE>
+
+	brew link <PACKAGE>      # simlinks where files have to be to brew Cellars
+	brew unlink <PACKAGE>    # unsimlinks where files have to be to brew Cellars

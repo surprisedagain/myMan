@@ -1,0 +1,7 @@
+= AUDACITY =
+    MAC APP use macos gui to start app
+
+== COMMON TASKS ==
+=== concatenate files ===
+	1) menu: Edit > Select > All (shortcut Ctrl-A)
+	2) menu: Tracks > Align Tracks > Align End to End

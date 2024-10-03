@@ -1,0 +1,10 @@
+= COMMAND FORM: =
+    git rm [--cached] [PATH]
+
+= EXAMPLE: =
+    git rm path/to/file
+
+= COMMON OPERATIONS: =
+    git rm <PATH>            # remove <PATH> from both WT and index
+
+    git rm --cached <PATH>   # remove file from index without deleting in WT

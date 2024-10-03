@@ -1,0 +1,12 @@
+= COMMAND FORM: =
+    git clone [--filter=blob:none] <URL>|<SSH>
+
+= EXAMPLES: =
+    git clone https://github.com/surprisedagain/royalur.git
+
+= COMMON OPERATIONS: =
+    git clone <URL/SSH>     # get FULL repo
+
+    git clone --filter=blob:none <URL/SSH>
+                           # - pull down tree but no contents to start
+                           # - blobs pulled down as needed many common ops cheap

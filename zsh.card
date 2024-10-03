@@ -1,0 +1,91 @@
+= ZSH  =
+[[#HISTORY EXPANSION]], [[#MODIFIERS]] and [[#GLOB QUALIFIERS]]
+== HISTORY EXPANSION ==
+=== EXAMPLES ===
+	echo !-2:3
+	mv !{start:2} !{-1:$}
+
+=== pattern ===
+	!-<N>:<ARGUMENT>:<MOD>     # Nth previous command ARGUMENT 0 is command name
+
+==== special patterns ====
+    !!          # previous command
+    !#          # current command (useful to repeat arguments)
+    !<STR>      # last command starting with <STR>
+    !?<STR>?    # last command containing <STR>
+
+    !-1:<n>-<m>      # range of words, <n> defaults to 0
+    !-2:^  /   $     # first / last ARGUMENT as expected
+    !!:*             # * is all the ARGUMENTS
+    !{-2:1-3}        # use braces {} to insulate from adjacent text if required
+    !#:1:s/old/new
+    !<N>:1:t         # comand number N. t from modifiers below
+
+==== related commands ==== 
+history         # lists recent commands and their numbers == fc -l
+fc -ln -<N>     # lists the <N>th last command: see man zshbuiltins
+
+== MODIFIERS ==
+can be applied to shell parameter expansions, history expansions and globs
+=== EXAMPLES ===
+	echo *(:e)
+	echo *.pdf(:t:r)
+
+	cd ${param:h}
+	cd $param:A:h
+	echo $param(:A:t)
+	$(ls fred)(:e)
+
+==== useful values ====
+	A    # absolute and resolve symbolic links
+	a    # absolute . and .. resolved dont fiddle with symbolic links
+	c    # search $PATH and give full path to file ONLY RESOLVES COMMANDS
+	h    # head = path segment before final /
+	t    # tail = path segment after final /
+	e    # extension after last . (after final / if present)
+	r    # root all before last . (behaves with / as hoped for)
+	l    # convert to lower case
+	s/foo/bar/    # do the substitution
+
+can be applied over each other :t:r is filename without path or ext
+
+== GLOB QUALIFIERS ==
+Not quite the same - these are filters
+NOT modifying expansions but selecting what shall be expanded
+=== EXAMPLE ===
+	ls *(.)
+	echo *.pdf(@:t:r)
+
+==== useful cases ====
+(.)      # ordinary files
+(/)      # directories
+(@)      # symbolic links
+(D)      # will match .files without requiring .pattern
+(.,@)    # EITHER . or @ (comma separated) 
+
+== GLOB MAGIC CHARACTERS ==
+[anyofset] [^notanyofthese] | (alternation) * ?
+**/      # matches any path (sub)sequence allows search of directory trees
+***/     # follows SYMBOLIC links
+
+== PARAMETER EXPANSION ==
+$* == DOLLAR{argv} and
+$@ are equivalent except inside "double quotes"
+"$@" is "first" "second" ...
+"$*" is "first second ..."
+
+argv and positional subscripts: 1 is first ARGUMENT 2 is 2nd ... 
+$0 is <command name), or if an (interactive) shell then "-zsh"
+
+${~name}    forces glob expansion of the value of name
+$'\n'       allows <q>C-style escapes</q> - poorly documented
+
+== JOB CONTROL ==
+<C-z> = suspend
+jobs, fg [%N], bg [%N]
+nohup, disown
+& != &! == &|
+
+== online resources ==
+https://zsh-manual.netlify.app/expansion?highlight=modifier#1414-modifiers
+https://zsh-manual.netlify.app/expansion#1487-glob-qualifiers

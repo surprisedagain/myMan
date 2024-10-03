@@ -1,0 +1,14 @@
+= COMMAND FORM: =
+    git commit [-a|--amend]
+
+== EXAMPLE: ==
+    git commit
+
+== COMMON OPERATIONS: ==
+    git commit     # create new commit at HEAD from INDEX
+
+    git commit -a  # commit all tracked files (roughly: files in prev commits)
+                   # - sort of auto stages all changes and commits in one go
+
+    git commit --amend  # effectively replaces the last commit with new commit
+                          can just replace message or replace prev files 
