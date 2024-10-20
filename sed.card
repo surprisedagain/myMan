@@ -25,6 +25,12 @@ groups \1, etc., but no lookahead
 
 [[re]] for Extended RegEx cheatsheet
 
+== REPLACEMENT CODES ==
+\l    # next character lowercase (e.g. \l\1)
+\L    # all lowercase till \E ????? unconfirmed
+\u    # next character uppercase
+\U    # all uppercase till \E ????? unconfirmed
+
 == OPTIONS ==
     -E          # Extended regex - almost always desired
     -n          # No-print - useful with p command

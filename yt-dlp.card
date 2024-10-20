@@ -1,0 +1,24 @@
+= yt-dlp =
+== COMMAND FORM ==
+	yt-dlp [OPTIONS] <URL>
+
+== EXAMPLE ==
+	yt-dlp -f 'bestaudio[ext=m4a]' --playlist-start 12 <URL>
+
+== OPTIONS ==
+	--format, -f
+
+	--playlist-items
+	--playlist-start
+
+	--best
+	
+== common usage ==
+1) yt-dlp $URL
+2) afconvert -f WAVE -d LEI24 --mix $FILE.m4a
+3) lame -V 5 $FILE.wav
+
+
+== online resources ==
+=== beginner guide ===
+excellent: https://ostechnix.com/yt-dlp-tutorial/

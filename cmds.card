@@ -1,6 +1,6 @@
 = Commands =
-	[[brew]], [[cut]], [[find]], [[man]], [[pdb]], [[pdfgrep]], [[printf]],
-	[[screen]], [[sed]], [[venv]], [[vim]], [[whence]], [[zsh]]
+	[[brew]], [[cut]], [[find]], [[git]], [[man]], [[pdb]], [[pdfgrep]],
+	[[printf]], [[screen]], [[sed]], [[venv]], [[vim]], [[whence]], [[zsh]]
 
 	??btop, ??rmlint, ??ncdu
 
@@ -18,13 +18,13 @@
 
 	pngquant      # compress png
     
-	ps, pkill, kill, fg, bg %J, ^z
+	ps, pkill, kill, fg, bg %J, ^z (suspend current process)
 	stat (~=readlink); sort, uniq, tail
 	rsync, rmlint, ncdu
  
 	curl -O URL, wget URL
 	
-	afinfo, caffeinate, *yt-dlp*
+	caffeinate, 
 	
 	open -a APPLICATION --args arguments <...>
 	
@@ -37,11 +37,17 @@
 	vared         # potentially more flexible version of read for zsh
 
 == PDF manipulation ==
-    pdfcat *      # function in .zshenv wrapper for ghostscript command
+	pdfcat *      # function in .zshenv wrapper for ghostscript command
 				  
     pdfcompress * # function in .zshenv to compress pdf files
                     wrapper for ghostscript command
 	
-    pdftocio      # generate/manipulate pdf tables of contents
+	pdftocio      # generate/manipulate pdf tables of contents
                     this is a python module: <q>pip install pdf.tocgen<q>
                     see https://github.com/Krasjet/pdf.tocgen
+== audio visual ==
+	[[yt-dlp]]    # download YouTube video/audio. Complex, precise
+              # see https://ostechnix.com/yt-dlp-tutorial/
+
+	afinfo, afconvert
+

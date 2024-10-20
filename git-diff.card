@@ -23,6 +23,7 @@
 	--name-only A..B        # lists all files that have changed in B since A
 
 == INTERPRETING OUTPUT ==
+    index f3e63d7..e8f44ba 100644
     --- a/docs/referenceTable.sed
     +++ b/docs/referenceTable.sed
     @@ -31,4 +31,3 @@ s/href="[^"]*zz.texts[^"]*\/russell1914\.knowledgeOfExternalWorld\.pdf"/href="ht
@@ -34,7 +35,7 @@
      context
      context
      context
---- a is the older version (by default the version in the index)
+index f3e63d7..e8f44ba 100644 = <OLD-COMMIT HASH> <NEW-COMMIT HASH> <CHMOD PERMISSIONS>
 +++ b is the newer version (by default in WT --cached makes it the index version)
 @@ -startline,offset +startline,offset @@ Hunk descriptor (guess at significant recent line)
 offset starts counting at 1

@@ -6,7 +6,7 @@
 	mv !{start:2} !{-1:$}
 
 === pattern ===
-	!-<N>:<ARGUMENT>:<MOD>     # Nth previous command ARGUMENT 0 is command name
+	!-<N>:<ARGUMENT>:<MOD>     # Nth previous command - ARGUMENT 0 is command name
 
 ==== special patterns ====
     !!          # previous command
@@ -85,6 +85,11 @@ $'\n'       allows <q>C-style escapes</q> - poorly documented
 jobs, fg [%N], bg [%N]
 nohup, disown
 & != &! == &|
+
+term, kill, stop, cont ∊ kill signals
+stop = suspend
+https://linuxhandbook.com/sigterm-vs-sigkill/
+kill -s signal
 
 == online resources ==
 https://zsh-manual.netlify.app/expansion?highlight=modifier#1414-modifiers

@@ -1,0 +1,11 @@
+= git show =
+== COMMAND FORM ==
+    git show [-OPTIONS] <object>
+    git show [-OPTIONS] <object>
+
+Show one or more objects (blobs, trees or commits)
+For a commit (e.g. HEAD~1 | 76fe32a1)
+	show the log message and a diff of all files (with previous?)
+For trees (directory - e.g. 76fe32a1:./ | main:./subdir)
+	list the files in the commit:directory
+For a blob (file - e.g. HEAD:collapse.card) show the full text of the file

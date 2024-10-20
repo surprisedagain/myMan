@@ -21,6 +21,6 @@ and the default restore source for the index is HEAD. When both --staged and
     git restore --staged <PATH>
                         # restore PATH in INDEX from HEAD
 
-    git show <COMMIT>:PATH
+    [[git-show]] <COMMIT>:PATH
                         # print PATH from COMMIT
                           why? redirect to <NAME> to save as NAME

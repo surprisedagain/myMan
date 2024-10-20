@@ -37,6 +37,16 @@ zM              # close ALL folds
 :vsp <filename>
 :helpg[rep]     # search help files !!!!!!!!
 
+=== completion ===
+^n ^p    forward/backwards search words in this file 
+^x^o     omni (clever?) completion
+^x^f     filename completion !!
+^x^n     complete with word found in this file or another buffer
+^x^p     pull from (next bit of) where you pulled the last one from
+^x^l     complete entire line
+
+<Ctrl-n> or <Ctrl-p> to cycle through options
+<Ctrl-e> to end without inserting completion
 
 === Movements ===
 w b e | ^ $ f t ; , 'm `m
@@ -135,13 +145,12 @@ REQUIRES \ :    \+ \? \( \) \| \{3,7} \< \>
 
 == Vimwiki ==
 :B            # insert backlinks
+and ((footnotes)) are defined in ~/.vim/after/ftplugin/vimwiki.vim
+
 :S <regex>    # search and lopen
 :T <regex>    # show list of matching tags in location list
-and ((footnotes)) are all defined in ~/.vim/after/ftplugin/vimwiki.vim
+
 
 also modified ~/.vim/bundle/vimwiki/plugin/vimwiki.vim:129
 and ~/.vim/bundle/vimwiki/syntax/vimwiki.vim:386
 to coerce italics to display as underlined since firacode font has no italics :(
-
-completion is  <Ctrl-c> which is an alias for <Ctrl-x><Ctrl-o>
--> <Ctrl-o> or <- <Ctrl-p> to cycle through options

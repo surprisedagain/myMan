@@ -18,7 +18,7 @@
 	-ctime <n>[smhdw]    # changed (contents changed)
 
 	-print0    # if output is piped to xargs this fixes separator
-                 use xargs -0 flag
+                 use "xargs -0" flag
 	-L         # follow symlinks (default is to use links properties)
 
 	-exec <CMD> [arg ...] ;
