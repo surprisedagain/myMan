@@ -4,6 +4,7 @@
 
 == EXAMPLE: ==
     printf 'a%f10.2b' $((11/3) )
+    printf 'each one: %s\n' loop over these args GLOB* 
 
 == OPTIONS ==
 	-v PARAM    # store the printed string into PARAM - do NOT print on stdout
@@ -26,7 +27,7 @@ precision is the maximum string length for %.Ns
 	a    # hexadecimal
 
 === flags ===
-  -        # left justify within WIDTH
+	-        # left justify within WIDTH
 	+        # show +/- before number
 	SPACE    # space before +ve, - before -ve 
 	0        # prepad with 0s to fill WIDTH

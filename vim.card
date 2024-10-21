@@ -5,7 +5,7 @@
 
 == COMMANDS ==
 i I a A o O c C d D y Y p P
-gi              # gOTO iNSERT (move after last inserted character) start insert
+gi              # gOTO iNSERT - move after last inserted character + start insert
 ctrl(g)         # show filename
 g-ctrl(g)       # quick wordcount and cursor position
 gf              # gOTO fILE under cursor (very cool)
@@ -20,12 +20,11 @@ gu / gU         # lower / upper case on MOVEMENT
 :ret[ab]        # replace tabs with spaces over range
 :R              # nathan defined retab
 :term[inal]     # !!!!!! open terminal
-    :mterm :fterm
-:find **/filename*
+	:mterm :fterm
+:find **/filename *
 
 zf[old], zo[pen], zc[lose], zd[elete]
-zR              # open ALL folds
-zM              # close ALL folds
+zC / zO         # close/open ALL folds
 :set fdc=1      # show folds in foldcolumn
 
 :wa             # Write All
@@ -49,7 +48,7 @@ zM              # close ALL folds
 <Ctrl-e> to end without inserting completion
 
 === Movements ===
-w b e | ^ $ f t ; , 'm `m
+w b e | 0 ^ $ f t ; , 'm `m
 { } ( )
 
 <n>gg <n>G    # gOTO line <n> - gg default 1 G default $
@@ -75,7 +74,7 @@ is | as    # inside | all of sentence containing cursor
 ip | ap    # inside | all of paragraph containing cursor
 it | at    # inside | all html tag containing cursor
 V          # select whole line - can [count]V
-
+[fred]
 == Register specials/tricks==
 <ctrl-r><ctrl-w>      # copy word under cursor.  often -> commandline
 <ctrl-r><REGISTER>    # insert mode - paste contents of register
