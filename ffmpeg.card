@@ -1,0 +1,63 @@
+= ffmpeg =
+== COMMAND FORM ==
+    ffmpeg [input_file_options] -i input_file ... [output_file_options] output_file
+
+== EXAMPLES ==
+	ffmpeg -i input.mov output.mp4
+	ffmpeg -i input.mp4 -q:a 0 -map a -c:a libopus output.mp3
+	ffmpeg -ss 00:01:00 -to 00:02:30 -i input.mp4 -c:v libx264 -c:a aac output.mp4
+	ffmpeg -ss 00:01:00 -to 00:02:30 -i input.mp4 -c copy output.mp4
+	ffmpeg -i input.wav -c:a libmp3lame -b:a 192k output.mp3
+	ffmpeg -i input.mp3 -af "volume=1.5" output.mp3
+	ffmpeg -formats
+
+== INPUT OPTIONS ==
+Timing inaccurate, fast, does not require re-encoding
+	-ss POSITION       # Seek to POSITION before processing.
+	-t  DURATION       # Limit input duration
+	-to POSITION       # Stop reading input at POSITION
+	-accurate_seek     # More precise seeking (may be slower)
+
+== OUTPUT OPTIONS ==
+Timing accurate, slower processing, re-encoding required
+	-ss POSITION       # Seek to POSITION. Slow, accurate, re-encoding
+	-t DURATION        # Limit output duration
+	-to POSITION       # Stop output at POSITION
+	-c CODEC           # Codec for audio or video (e.g., -c:a libmp3lame, -c:v libx264, or -c copy)
+	-b BITRATE         # bitrate (e.g., -b:a 192k)
+	-q:a [0-9]         # quality for mp3 VBR - 0 Highest quality 5 Medium-low
+	-map a             # only map audio streams from input to output
+	-f FORMAT          # Force output format
+
+=== Position / Duration === 
+argument format can be any of:
+	1450        # Seconds
+	MM:SS       # Minutes:Seconds
+	HH:MM:SS    # Hours:Minutes:Seconds
+
+=== concatenate ===
+Create a text file files.txt containing:
+    file 'file1.mp4'
+    file 'file2.mp4'
+Then:
+	ffmpeg -f concat -i files.txt -c copy output.mp4
+
+
+=== .opus quality levels ===
+Opus always uses VBR by default - use -b:a only
+-b:a 48k      # mono speech, audiobooks, podcasts
+-b:a 64k      # stereo speech, soft music or speech+music mixes
+-b:a 96k      # default for general listening; good for stereo music
+-b:a 128k     # high-quality music, transparent for most ears
+-b:a 160k     # excellent music quality, especially for complex sources
+-b:a 192k     # archival music, indistinguishable from lossless for most
+-b:a 256k     # very high quality; rarely needed
+
+== Notes ==
+  - Use `-c copy` to avoid re-encoding when possible.
+  - Some operations require re-encoding (e.g., changing codecs, filters).
+  - Use `-map` to control which streams are included in output.
+  - test with `-t` or `-ss` options to avoid processing long files unnecessarily during development.
+
+=== online manual ===
+https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#usage-and-options

@@ -33,7 +33,7 @@ git restore -s <SOURCE> <PATH>
 git restore --staged <F>
                       # restore <F> in INDEX from HEAD
 
-git show <COMMIT>:<PATH>    # print <PATH> from <COMMIT>
+[[git-show]] <COMMIT>:<PATH>    # print <PATH> from <COMMIT>
                               redirect to file to save under new name
 
 [[git-diff]] [<COMMIT>] [<PATH>]

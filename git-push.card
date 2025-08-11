@@ -1,23 +1,23 @@
-COMMAND FORM:
+= git push =
+== COMMAND FORM ==
     git push <REMOTE> [<BRANCH>]
 
-EXAMPLES:
+== EXAMPLES ==
     git push
     git push origin dev --force
     git push origin :
 
-COMMON OPERATIONS:
-    git push        # push current branch to upstream remote
+== COMMON OPERATIONS ==
+	git push        # push current branch to upstream remote
 
-    git push <REMOTE> [<BRANCH>]
+	git push <REMOTE> [<BRANCH>]
                     # push BRANCH to REMOTE
                     # Default BRANCH = current (HEAD->) branch
 
-    git push <REMOTE> :
+	git push <REMOTE> :
                     # push all tracking branches to REMOTE
 
 
-    git push <REMOTE> <BRANCH> --force
+	git push <REMOTE> <BRANCH> --force
                     # rewrite history !! Will delete commits from GitHub REMOTE
-                    # forces rebases/squashes up to remote !!
-
+                      forces rebases/squashes up to remote !!

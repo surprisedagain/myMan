@@ -1,26 +1,37 @@
-= COMMAND FORM: =
-    git restore [-s <SOURCE>] [--staged] <PATH>
+= git restore =
+[[git-reset]], [[git-show]]
+
+== COMMAND FORM: ==
+    git restore [-s <SOURCE>] [--staged] [--worktree] [--] <PATHSPEC>
 
 == EXAMPLES ==
     git restore importantfile.card
-    git restore -s 0ff742 path/to/directory
-    git restore :/
+    git restore -s 0ff742 path/to/directory/
 
-If not specified, the default restore source for the working tree is the index,
-and the default restore source for the index is HEAD. When both --staged and
---worktree are specified, --source must also be specified.
+default target is working tree
+if target is working tree, default source is the index.
+if target if staging area, default source is HEAD.
+if both --staged and --worktree are specified, --source must also be specified.
 
+== OPTIONS == 
+	-s <commit>    # source
+	-W             # restore to working tree (default)
+	-S             # restore to staging area (-W -S restores both)
+	
 == COMMON OPERATIONS ==
-    git restore <PATH>  # restore PATH from INDEX ('.' restores directory)
-
-    git restore :/      # ':/' restores entire tree (ugly magic!!)
+    git restore <PATH>  # restore PATH from INDEX
+                        # '.' restores entire tree rooted by current directory
 
     git restore -s <COMMIT> <PATH>
                         # restore PATH in WT from <COMMIT>
 
     git restore --staged <PATH>
-                        # restore PATH in INDEX from HEAD
+                        # restore <PATH> in SA from HEAD
 
     [[git-show]] <COMMIT>:PATH
                         # print PATH from COMMIT
                           why? redirect to <NAME> to save as NAME
+== <PATH> ==
+note ~~*~~ is recursive in <PATH> - dir1/dir2/*.c matches all .c files anywhere
+under dir2.
+dir1/dir2 == dir1/dir2/ and both cover the entire tree rooted in dir2

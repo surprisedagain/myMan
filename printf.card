@@ -1,17 +1,22 @@
-= COMMAND FORM: =
-    print [-n -v ] [-f FORMAT] arg ...
-    printf [ -v name ] format [ arg ... ]
+= printf =
+== COMMAND FORM: ==
+    print [-l -n -s -v -P] [-f FORMAT] arg ...
+    printf [-v name] format [arg ... ]
 
 == EXAMPLE: ==
-    printf 'a%f10.2b' $((11/3) )
-    printf 'each one: %s\n' loop over these args GLOB* 
+	printf 'a%10.2fb' $((11/3) )
+	printf 'each one: %s\n' loop over these args GLOB* 
 
 == OPTIONS ==
 	-v PARAM    # store the printed string into PARAM - do NOT print on stdout
+=== print ONLY options ===
+	-f <FORMAT>
+	-l          # separate printed arguments with '\n' instead of ' '
+	-c          # print in columns
+	-o / -O     # sort output ascending/descending
+	-n          # do not print newline at end of string
+	-P          # do escape expansion (e.g. "%F{140}colors%f" works)
 	-s          # print to history instead of stdout
-	-P          # ONLY for *print* do escape expansion (e.g. "%F{140}colors%f" works)
-	-n          # ONLY for *print* - do not print newline at end of string
-                # *printf* only puts newline if \n at end of format string
 
 == FORMAT STRING SYNTAX ==
     %[flags][width][.precision]type
@@ -19,6 +24,7 @@ precision is the maximum string length for %.Ns
 
 === types ===
 	s    # string
+	q    # quote the argument so it can be reused as shell input.
 	d    # decimal integer 
 	e    # scientific notation
 	g    # normal or scientific whichever shortest

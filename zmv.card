@@ -1,0 +1,21 @@
+= zmv =
+== COMMAND FORM ==
+    zmv [OPTIONS] <MatchingPattern> <NewNamePattern>
+
+== EXAMPLE ==
+    zmv 'this*(here*)that([anyone]*other)' '$1and${2}'
+    count=1 ; zmv '(* )_*.jpg' '$1-$( (count++)).jpg'
+
+== OPTIONS ==
+	-n     # Dry-run. DO nothing PRINT changes that would be made
+	-c     # case insensitive matching
+	-r     # recursive
+	-i     # interactive - prompt before each change
+	-L     # make symbolic links pointing to original
+	-H     # make hard links
+
+== Patterns ==
+	${(L)1}    # match group 1 - converted to lower case
+	${(U)1}    # match group 1 - converted to UPPER case
+	${(C)1}    # match group 1 - converted to Capitalise first letter
+These are zsh parameter expansion flags

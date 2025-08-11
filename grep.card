@@ -1,52 +1,77 @@
 = grep / pdfgrep =
+[[re]], [[sed]]
 == COMMAND FORM ==
     grep [-OPTIONS] <PATTERN> <FILE> ...
     pdfgrep [-OPTIONS] <PATTERN> <FILE> ...
 
 == EXAMPLE ==
-    grep 'atom|[any]+|^(maybe)?$' directory/*
+    grep 'atom|[any]+|^(maybe)?|(repeat){3,10}$' directory/*
 
 === note ===
-	grep is aliased to pcregrep !!!
+	grep is aliased to pcre2grep !!!
 	? DOES make lazy
 
 == OPTIONS ==
-    -F      # fixed strings
-    -i      # ignore case
-    -C5     # 5 lines of Context before and after matching line
-    -c      # only the Count of matches is printed
-    -H      # print filename at start of matching line (default)
-    -h      # do NOT print filename at start of matching line
-    -n      # print line number before matching line (after filename if -H)
-    -o      # only print the matching part of the line
-    -l      # _only_ print names of files containing matches
-    -L      # only print names of files NOT containing matches
-    -v      # invert match - show non-matching lines
-    -a      # force treat as ascii - something about binary files?
-    -r        # recursive if passed directory recurse into it
+	-F      # fixed strings
+	-i      # ignore case
+	-C5     # 5 lines of Context before and after matching line
+	-c      # only the Count of matches is printed
+	-H      # print filename at start of matching line (default)
+	-h      # do NOT print filename at start of matching line
+	-n      # print line number before matching line (after filename if -H)
+	-o      # only print the matching part of the line
+	-l      # only print names of files containing matches
+	-L      # only print names of files NOT containing matches
+	-v      # invert match - show non-matching lines
+	-a      # force treat as ascii - something about binary files?
+	-r      # recursive if passed directory recurse into it
 
 == pdfgrep only ==
-    -P      # makes pcre
-    -n      # print page number before matching line
+	-P      # makes pcre (default is ERE [see [[re]] ])
+	-n      # print page number before matching line
 
 == MAGIC ==
 .()*+?{}[]|^$ are MAGIC
 
-== PCRE ONLY shorthands ==
+== character types ==
 \w word constituent.
-\W non-word constituent.
-
-\d digit
-\D non-digit
+\W non-word-constituent.
 
 \s whitespace
 \S non-whitespace
+
+\d digit
+\D non-digit
 
 \b edge of a word.
 \B not edge of a word.
 
 === PCRE does NOT have ===
 \< or \>
+
+== PCRE character classes ==
+\ - ^ ] are the only MAGIC characters in character classes
+- only MAGIC when interpretable as specifying a range
+^ only MAGIC at start (where it indicates negation)
+] closes the class - for literal ] use \] or put first in class []still_in]
+
+character types such as <q>\s</q> still work
+opening [ can be special if interpretable as start of posix class
+
+=== posix named set ===
+PCRE ONLY SUPPORTS named sets *within character classes*
+[:^alnum:]    NOT letters and digits
+[:alnum:]     letters and digits
+[:alpha:]     letters
+[:ascii:]     character codes 0 - 127
+[:blank:]     space or tab only
+[:cntrl:]     control characters
+[:graph:]     printing characters, excluding space
+[:lower:]     lower case letters
+[:print:]     printing characters, including space
+[:punct:]     printing characters, excluding letters and digits and space
+[:upper:]     upper case letters
+[:xdigit:]    hexadecimal digits
 
 == PCRE lookahead/behind ==
 (?=...)         positive look ahead

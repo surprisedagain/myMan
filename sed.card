@@ -3,8 +3,12 @@
     sed [-OPTIONS] COMMAND FILE . . .
 *note: sed is aliased to gsed. This cheatsheet is for gsed*
 
-== EXAMPLE: ==
+== EXAMPLE ==
     sed -E -e 's/regex/replace/g' filename[s]
+
+== OPTIONS ==
+    -i[SUFFIX]   # edit files in place (makes backup if SUFFIX supplied)
+    -n           # suppress automatic printing of pattern space
 
 == MAGIC ==
 === always MAGIC ===

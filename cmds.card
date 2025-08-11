@@ -1,8 +1,17 @@
 = Commands =
-	[[brew]], [[cut]], [[find]], [[git]], [[man]], [[pdb]], [[pdfgrep]],
-	[[printf]], [[screen]], [[sed]], [[venv]], [[vim]], [[whence]], [[zsh]]
+[[brew]], [[cut]], [[find]], [[git]], [[man]], [[pdb]], [[pdfgrep]],
+[[printf]], [[screen]], [[sed]], [[venv]], [[vim]], [[whence]], [[zsh]]
+[[sort]], head, tail, column
+[[yt-dlp]]
 
-	??btop, ??rmlint, ??ncdu
+== new ==
+trans = google translate > trans [fr[:]to] <q>plain text</q>
+rdfind, newsboat, lynx
+
+== useful/obscure/forgettable ==
+	zmv           # super cool glob + numbered groups renamer
+				    '*(input-group1)xyz' 'outputName$1Included'
+	~~btop~~, ??ncdu
 
 	hash <CMD>    # to force macOS to re-evaluate which CMD it will use
                     (required when macOS has cached an old location for <CMD>
@@ -14,19 +23,22 @@
                     to sha256 a web page use the following command:
                     curl http://classics.mit.edu/Plato/meno.html | shasum -a 256
 
-	file          # identify the type and encoding (e.g. utf-8) of a file
+	file <NAME>    # identify the type and encoding (e.g. utf-8) of a file
 
-	pngquant      # compress png
-    
-	ps, pkill, kill, fg, bg %J, ^z (suspend current process)
 	stat (~=readlink); sort, uniq, tail
-	rsync, rmlint, ncdu
+	rsync, ncdu, tag, mkfifo, mkfifo
  
-	curl -O URL, wget URL
+	[[curl]] -O URL, wget URL
 	
-	caffeinate, 
+	caffeinate, pbcopy, pbpaste
 	
 	open -a APPLICATION --args arguments <...>
+	
+	command <PROG>    # run external <PROG> rather than shell script with
+                      # conflicting name
+== job control ==
+	ps, [[kill]], killall, pkill, fg, bg, C-z (suspend current process)
+    See [[zsh#JOB CONTROL]]
 	
 == for zsh scripts ==
 	xargs         # convert output to arguments to next command
@@ -37,17 +49,21 @@
 	vared         # potentially more flexible version of read for zsh
 
 == PDF manipulation ==
-	pdfcat *      # function in .zshenv wrapper for ghostscript command
+	pdfcat *      # .zshenv wrapper function for ghostscript command
 				  
-    pdfcompress * # function in .zshenv to compress pdf files
-                    wrapper for ghostscript command
+	pdfcompress *     # function in .zshenv to compress pdf files
+                        wrapper for ghostscript command
 	
 	pdftocio      # generate/manipulate pdf tables of contents
                     this is a python module: <q>pip install pdf.tocgen<q>
                     see https://github.com/Krasjet/pdf.tocgen
+
 == audio visual ==
-	[[yt-dlp]]    # download YouTube video/audio. Complex, precise
-              # see https://ostechnix.com/yt-dlp-tutorial/
+	[[yt-dlp]]        # download YouTube video/audio. Complex, precise
+                  # see https://ostechnix.com/yt-dlp-tutorial/
+	
+	[[ffmpeg]]
+	pngquant      # compress png
+	id3v2         # Adds/Modifies/Removes/Views id3v2 tags (mp3)
 
-	afinfo, afconvert
-
+	vlc [-Z][-L][-R]     # shuffle / Loop / Repeat

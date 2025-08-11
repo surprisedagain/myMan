@@ -8,7 +8,7 @@ prompt.
 == EXAMPLE: ==
     whence -v todo
 
-= OPTIONS: =
+== OPTIONS: ==
 	-v    # makes output verbose - shows where shell scripts defined
 	-w    # output of form "<CMD>: <TYPE>"
 	-f    # show code of shellscript

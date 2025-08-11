@@ -1,5 +1,11 @@
 = ZSH  =
-[[#HISTORY EXPANSION]], [[#MODIFIERS]] and [[#GLOB QUALIFIERS]]
+[[kill]], [[cmds]]
+[[#MODIFIERS]], [[#GLOB QUALIFIERS]]
+
+=== fresh tips ===
+ctrl-l - clear screen better than clear
+^old^new
+
 == HISTORY EXPANSION ==
 === EXAMPLES ===
 	echo !-2:3
@@ -13,13 +19,14 @@
     !#          # current command (useful to repeat arguments)
     !<STR>      # last command starting with <STR>
     !?<STR>?    # last command containing <STR>
+    !?<STR>?%   # the matching word of the last command containing <STR>
 
     !-1:<n>-<m>      # range of words, <n> defaults to 0
     !-2:^  /   $     # first / last ARGUMENT as expected
     !!:*             # * is all the ARGUMENTS
     !{-2:1-3}        # use braces {} to insulate from adjacent text if required
     !#:1:s/old/new
-    !<N>:1:t         # comand number N. t from modifiers below
+    !<N>:1:t         # command number N. t from modifiers below
 
 ==== related commands ==== 
 history         # lists recent commands and their numbers == fc -l
@@ -45,12 +52,14 @@ can be applied to shell parameter expansions, history expansions and globs
 	e    # extension after last . (after final / if present)
 	r    # root all before last . (behaves with / as hoped for)
 	l    # convert to lower case
+	u    # convert to upper case
+	
 	s/foo/bar/    # do the substitution
 
 can be applied over each other :t:r is filename without path or ext
 
 == GLOB QUALIFIERS ==
-Not quite the same - these are filters
+Not quite the same as modifiers - these are filters
 NOT modifying expansions but selecting what shall be expanded
 === EXAMPLE ===
 	ls *(.)
@@ -59,14 +68,20 @@ NOT modifying expansions but selecting what shall be expanded
 ==== useful cases ====
 (.)      # ordinary files
 (/)      # directories
+(F)      # non-empty directories
 (@)      # symbolic links
 (D)      # will match .files without requiring .pattern
 (.,@)    # EITHER . or @ (comma separated) 
 
-== GLOB MAGIC CHARACTERS ==
-[anyofset] [^notanyofthese] | (alternation) * ?
+== GLOB MAGIC ==
+? * [anyofset] [^notanyofthese] (this|that) <10-20> <-> (any number) {aa, bb, cc}
 **/      # matches any path (sub)sequence allows search of directory trees
 ***/     # follows SYMBOLIC links
+
+=== extended glob ===
+^notHere/file (zero or more)# (one or more)## 12#3 this~but not this
+
+setopt EXTENDED_GLOB is now in my .zshrc (so not active in non-interactive shells)
 
 == PARAMETER EXPANSION ==
 $* == DOLLAR{argv} and
@@ -75,21 +90,21 @@ $@ are equivalent except inside "double quotes"
 "$*" is "first second ..."
 
 argv and positional subscripts: 1 is first ARGUMENT 2 is 2nd ... 
-$0 is <command name), or if an (interactive) shell then "-zsh"
+$0 is <command name>, or if an (interactive) shell then "-zsh"
 
 ${~name}    forces glob expansion of the value of name
 $'\n'       allows <q>C-style escapes</q> - poorly documented
 
 == JOB CONTROL ==
-<C-z> = suspend
-jobs, fg [%N], bg [%N]
-nohup, disown
-& != &! == &|
+C-z     # Temporary SToP a process
+          (either <q>fg %N</q> to bring back or <q>bg %N</q> to run in background)
+jobs    # to get job number for use with fg %N or bg %N
+disown [-h] [-a]    # remove jobs from the shell’s job table ensuring they
+                      continue running in the background without being affected
+                      by hangup signals (SIGHUP) when terminal closed.
+see also [[kill]]
 
-term, kill, stop, cont ∊ kill signals
-stop = suspend
-https://linuxhandbook.com/sigterm-vs-sigkill/
-kill -s signal
+& != &! == &|    # last two background AND disown
 
 == online resources ==
 https://zsh-manual.netlify.app/expansion?highlight=modifier#1414-modifiers

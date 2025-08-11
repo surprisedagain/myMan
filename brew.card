@@ -1,7 +1,8 @@
-= COMMAND FORM: =
+= brew =
+== COMMAND FORM: ==
     brew <COMMAND> [OPTIONS] [PACKAGE]
 
-= COMMANDS: =
+== COMMANDS: ==
 	brew upgrade        # upgrades all packages
 	brew update         # updates brew itself
 	brew ls [PACKAGE]
@@ -10,8 +11,8 @@
 	brew install <PACKAGE>
 	brew uninstall <PACKAGE>
 
-	brew link <PACKAGE>      # simlinks where files have to be to brew Cellars
-	brew unlink <PACKAGE>    # unsimlinks where files have to be to brew Cellars
+	brew link <PACKAGE>      # symlinks from PATHy locations to brew Cellars
+	brew unlink <PACKAGE>    # unsymlinks from PATHy locations to brew Cellars
 
 
 == other rumoured commands ==
@@ -37,3 +38,17 @@ bson --all    Start all stopped services.
 brew services run    Run the service without registering to launch at login (or boot).
 bsr --all    Run all stopped services.
 brew uninstall --zap    Remove all files associated with a cask.
+
+=== notes on recent packages ===
+openjdk@11
+For the system Java wrappers to find this JDK, symlink it with
+  sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
+
+openjdk@11 is keg-only, which means it was not symlinked into /usr/local,
+because this is an alternate version of another formula.
+
+If you need to have openjdk@11 first in your PATH, run:
+  echo 'export PATH="/usr/local/opt/openjdk@11/bin:$PATH"' >> ~/.zshrc
+
+For compilers to find openjdk@11 you may need to set:
+  export CPPFLAGS="-I/usr/local/opt/openjdk@11/include"

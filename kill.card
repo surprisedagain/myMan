@@ -1,0 +1,46 @@
+= kill =
+[[zsh#JOB CONTROL]], [[cmds]]
+== COMMAND FORM ==
+    kill [-s SIGNAL_NAME | -<N> | -<name> ] PID ...
+    kill -l
+
+== EXAMPLE ==
+    kill -term %4
+    kill %1
+    kill -info 6891
+
+== OPTIONS ==
+	-l     # list all kill signals
+	-s     # followed by name
+
+=== related commands ===
+C-z, C-c, C-\
+jobs, fg %N, bg %N, ps, nohup, disown
+pkill (kill with  grep pattern)
+killall (despite the name kill processes with exact name)
+
+=== signals ===
+==== TERM vs KILL ====
+TERM is the default signal, sent if no signal specified
+TERM is polite, children can be informed, clean up done
+KILL is harsh, cannot be ignored
+https://linuxhandbook.com/sigterm-vs-sigkill/
+
+==== INFO ====
+sleep command reponds to INFO by printing string stating number of
+seconds left to run
+
+==== other handy signals ====
+for full list see man *signal*
+ 1	HUP         terminate process - terminal line hangup
+ 2	INT  C-c    terminate process - interrupt program
+ 3	QUIT C-\    create core image - quit program
+ 6	ABRT        create core image - abort program (formerly SIGIOT)
+ 9	KILL        terminate process - kill program
+14	ALRM        terminate process - real-time timer expired
+15	TERM        terminate process - software termination signal
+17	STOP        stop process      - stop (cannot be caught or ignored) for future resumption?
+18	TSTP C-z    stop process      - stop signal generated from keyboard
+19	CONT        discard signal    - continue after stop
+28	WINCH       discard signal    - Window size change
+29	INFO        discard signal    - status request from keyboard

@@ -1,25 +1,27 @@
 = git log =
+better than [[git-show]] for showing multiple commit messages
+
 == COMMAND FORM ==
     git log [-OPTIONS] <COMMIT_RANGE> [--] PATHS
     git log [-OPTIONS] <COMMIT>
 
-Show the log of the specified commits. Show the history of the files on the
-PATHS (i.e. show only those commits where those files were altered - merges can
-make this tricky and thereq are rules about what portion of history is shown)
+Show the log of all commits reachable from <COMMIT> or in <COMMIT_RANGE>. Show
+the history of the files on the PATHS (i.e. show only those commits where those
+files were altered - merges can make this tricky and there are rules about what
+portion of history is shown)
 
-will show diffs (patches) 
 == EXAMPLES ==
     git log -1 docs/wrongDouble.png     # show last commit where file changed
     git log --oneline main~1..tt 
-    git log <FROM_COMMIT>..<TO_COMMIT>  # FROM must be older. FROM not in TO in
+    git log <FROM_COMMIT>..<TO_COMMIT>  # FROM must be older. FROM not in, TO in
     git log HEAD~1..CURRENT             # HEAD~1 == 1 before HEAD
     git log -p -S string -- <PATH>
 
 = OPTIONS =
-	-<n>          # n logs before and including <BRANCH/COMMIT>
+	-<N>          # <N> logs before and including <BRANCH/COMMIT>
 
 	--grep="pat"    # search pat in commit messages
-	-G'pat.*'       # grep code (regex)
+	-G'pat.*'       # grep file content (regex)
 	-P              # Perl regex (BRE's by default)
 	-S'string'      # "pickaxe" string introduced/removed in code
 

@@ -1,0 +1,19 @@
+= git stash =
+[[git-switch]]
+
+== COMMAND FORM ==
+    git stash push
+    git stash pop
+    git stash pop --index
+
+== EXAMPLE ==
+    ?????????
+
+Does what many expect git to do by default - rewrites the WT (and SA) fully
+when used in combination with switching branches.
+
+Push creates TWO commits - one of current WT state and another of SA state
+
+
+== OPTIONS ==
+	--index     # update SA in addition to WT when restoring changes

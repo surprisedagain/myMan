@@ -1,20 +1,22 @@
-COMMAND FORM:
+= git remote =
+[[git]]
+== COMMAND FORM ==
     git remote add <REMOTE> <URL/SSH>
     git remote remove <REMOTE>
 
-EXAMPLES:
-    git remote remove origin
+== EXAMPLES ==
     git remote add origin https://github.com/surprisedagain/royalur.git
+    git remote remove origin
 
-COMMON OPERATIONS:
-    git remote add <REMOTE> <URL/SSH>
+== COMMON OPERATIONS ==
+	git remote add <REMOTE_NICKNAME> <URL/SSH>
                         # why? often used to add the original source of a fork
                         # as a second upstream remote
 
-    git remote remove <REMOTE>
+	git remote remove <REMOTE>
                         # what it says on the tin
 
-    git branch -u <UPSTREAM> [<BRANCH>]
+	git branch -u <UPSTREAM> [<BRANCH>]
                         # make BRANCH of UPSTREAM repo the tracking branch
                         # of local BRANCH.
                         # Default BRANCH = current (HEAD->) branch.

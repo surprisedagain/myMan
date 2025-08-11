@@ -1,11 +1,32 @@
 = git show =
+better than [[git-log]] for showing a single commit message and changes
+[[git-restore]]
+
 == COMMAND FORM ==
     git show [-OPTIONS] <object>
     git show [-OPTIONS] <object>
 
 Show one or more objects (blobs, trees or commits)
 For a commit (e.g. HEAD~1 | 76fe32a1)
-	show the log message and a diff of all files (with previous?)
-For trees (directory - e.g. 76fe32a1:./ | main:./subdir)
+	show the log message and a textual(?) diff of all files (with previous?)
+	only shows changed files
+For trees (directory - e.g. 76fe32a1:./ | MAIN:./subdir)
 	list the files in the commit:directory
 For a blob (file - e.g. HEAD:collapse.card) show the full text of the file
+For <COMMIT> -- file : show diff of that file from parent commit
+
+== EXAMPLES ==
+    git show --oneline --name-only HEAD:directory
+    git show HEAD -- file
+    git show HEAD:file >file_oldVersion
+
+== OPTIONS ==
+	--oneline      # just abbrev SHA and top line of message (still diff/contents)
+	-s             # suppress all diff generation
+	--name-only    # just list files (still full commit message)
+	--stat         # for each modified/created file show a graph of how many
+	                lines have been added/changed/removed
+
+
+== NOTE ==
+	git ls-tree -r --name-only <COMMIT>    # to list all tracked files in commit

@@ -1,32 +1,33 @@
-= COMMAND FORM: =
+= git diff =
+== COMMAND FORM: ==
     git diff [--cached] [COMMIT] [PATH]
     git difftool [--cached] [COMMIT] <PATH>
     
 == EXAMPLES: ==
-	git diff
-	git diff 04b72f09 onefile.card
-	git diff --cached HEAD~1 filename
-	git diff BRANCHNAME filename
-	git diff adirectory
+    git diff
+    git diff 04b72f09 onefile.card
+    git diff --cached HEAD~1 filename
+    git diff BRANCHNAME filename
+    git diff adirectory
 
-	git difftool HEAD~1 collapse.card
+    git difftool HEAD~1 collapse.card
 
 === COMMON OPTIONS ===
 	git diff [<COMMIT>] [<PATH>]
-                            # diff COMMIT/PATH with WT/PATH
-                              Default COMMIT="INDEX" (=staged)
-                              Default PATH="whole WT"
+                         # diff WT/PATH with COMMIT/PATH
+                           Default COMMIT="INDEX" (=staged)
+                           Default PATH="whole WT"
 
-	--cached [COMMIT]       # diff INDEX with COMMIT (default COMMIT=HEAD)
-                              Shows what will be changed by commiting right now
+	--cached [COMMIT]    # diff INDEX/PATH with COMMIT/PATH (default COMMIT=HEAD)
+                           Shows what will be changed by commiting right now
 
-	--name-only A..B        # lists all files that have changed in B since A
+	--name-only A..B     # lists all files that have changed in B since A
 
 == INTERPRETING OUTPUT ==
     index f3e63d7..e8f44ba 100644
     --- a/docs/referenceTable.sed
     +++ b/docs/referenceTable.sed
-    @@ -31,4 +31,3 @@ s/href="[^"]*zz.texts[^"]*\/russell1914\.knowledgeOfExternalWorld\.pdf"/href="ht
+    @@ -31,7 +31,7 @@ s/href="[^"]*zz.texts[^"]*\/russell1914\.knowledgeOfExternalWorld\.pdf"/href="ht
      context
      context
      context
@@ -35,8 +36,8 @@
      context
      context
      context
-index f3e63d7..e8f44ba 100644 = <OLD-COMMIT HASH> <NEW-COMMIT HASH> <CHMOD PERMISSIONS>
+index f3e63d7..e8f44ba 100644 = <OLD-BLOB HASH> <NEW-BLOB HASH> <CHMOD PERMISSIONS>
 +++ b is the newer version (by default in WT --cached makes it the index version)
 @@ -startline,offset +startline,offset @@ Hunk descriptor (guess at significant recent line)
-offset starts counting at 1
+offset starts counting at 1 and includes all context
 by default git diff gives three lines of context around changes

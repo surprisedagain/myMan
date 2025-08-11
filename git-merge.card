@@ -1,15 +1,17 @@
-= COMMAND FORM: =
+= git merge =
+[[git]]
+== COMMAND FORM ==
     git merge [--abort][--no-ff] [OTHERBRANCH]
 
-== EXAMPLE: ==
+== EXAMPLE ==
     git merge dev
 
 == COMMON OPERATIONS: ==
-    git merge <OTHERBRANCH>  # merge <OTHERBRANCH> INTO the current branch
+	git merge <OTHERBRANCH>    # merge <OTHERBRANCH> INTO the current branch
 
-    git merge --abort        # abort attempt to resolve merge conflict
+	git merge --abort         # abort attempt to resolve merge conflict
 
-    git merge --no-ff <OB>   # no fast forward - <OtherBr> is not flattened into
-                             # current branch. Intermediate commits remain on
-                             # <OtherBranch> and are not included in current
-                             # branch.
+	git merge --no-ff <OB>    # no fast forward - <OtherBr> is not flattened into
+                              # current branch. Intermediate commits remain on
+                              # <OtherBranch> and are not included in current
+                              # branch.

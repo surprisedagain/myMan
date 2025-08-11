@@ -1,4 +1,4 @@
-= COMMAND NAME =
+= man =
 == COMMAND FORM ==
     man [-f -k -a] [SECTION_NUMBER] <COMMAND_NAME>
 

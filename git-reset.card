@@ -1,0 +1,17 @@
+= git reset =
+[[git-restore]], [[git-switch]], [[git-show]]
+
+== COMMAND FORM ==
+    git reset <COMMIT>[:<TREE>] [--] <PATHSPEC>
+    git reset [--soft | --hard] <COMMIT>
+
+Annoyingly first form ONLY resets STAGING AREA
+
+== EXAMPLES ==
+    git reset --hard HEAD
+    git reset 0f463b:dir1/dir2 -- *.card
+
+== OPTIONS ==
+	--soft    # ONLY moves HEAD
+                similar to [[git-switch]] but does not update/change any files
+	--hard    # resets both STAGING AREA and WORKING TREE

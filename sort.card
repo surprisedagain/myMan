@@ -1,0 +1,17 @@
+= sort =
+== COMMAND FORM ==
+    sort [-ubndfir] [-t <char>] [-k <N>[,<M>]]  [file ...]
+
+== EXAMPLE ==
+    sort -t ':' -k 3 input1.txt input2.txt
+
+== OPTIONS ==
+	-u    # unique - suppress all lines with a key equal to one already processed
+	-b    # ignore leading blanbks
+	-n    # numeric sort (fields may have leading blanks, a minus sign) then digits
+	-d    # dictionary order
+	-f    # ignore case
+	-i    # ignore non-printing
+	-r    # reverse order
+	-t <char>       # use char as field separator (default any sequence of blank space)
+	-k <N>[,<M>]    # sort based on field N (or fields N to M)

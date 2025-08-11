@@ -4,10 +4,11 @@
 
 == EXAMPLE ==
     cut -c  -3,5,8-10,15- long_lined_file.txt
+    cut -f  -3,5,8-10,15- long_lined_file.txt
 
 == OPTIONS ==
 	-c list     # character positions
-	-f list     # The list specifies fields, separated field delimiter character
+	-f list     # The list specifies fields, separated by field delimiter character
 	-d delim    # Use <delim> as the field delimiter instead of tab
 	              consecutive <delim> make empty fields
 	-w          # Use whitespace (spaces and tabs) as delimiter.  Consecutive

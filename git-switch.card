@@ -1,4 +1,5 @@
 = git switch =
+[[git]], [[git-add]], [[git-stash]],
 == COMMAND FORM ==
     git switch [-c|-d] <BRANCH>
 
@@ -6,12 +7,21 @@
     git switch main
     git switch -d 0ff2654
 
-== COMMON OPTIONS ==
+== OPTIONS ==
+	-c <BRANCH>          # create new BRANCH at current HEAD
+	-c <BRANCH> <OLD>    # create new <BRANCH> at <OLD> branch
+                           and point HEAD at it and rewrite WT
+	-d <COMMIT>          # point HEAD to COMMIT (produces detached head)
+
+== COMMON OPERATIONS ==
 	git switch <BRANCH>    # point HEAD to <BRANCH> and rewrite WT to match
 
-	-c <BRANCH>            # Create new BRANCH at current HEAD
+=== RULES FOR UPDATING FILES ===
+Fundamental rule: *If switch would lose data it is blocked*
 
-	-c <BRANCH> <OLD>      # create new <BRANCH> at <OLD> branch
-                             and point HEAD at it and rewrite WT
-
-	-d <COMMIT>            # point HEAD to COMMIT (produces detached head)
+* Uncommitted file in WT or SA is different from file in TARGET_COMMIT
+  BLOCK SWITCH.
+* Staged ([[git-add]]) but uncommitted file does not exist in TARGET_COMMIT
+  SWITCH GOES THROUGH, file is PRESERVED (and remains staged)
+* If uncommitted file in WT or SA is identical to file in TARGET_COMMIT - fine
+* Untracked files are PRESERVED unchanged

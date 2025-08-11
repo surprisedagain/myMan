@@ -1,14 +1,19 @@
-COMMAND FORM:
+= git pull =
+[[git-fetch]]
+
+== COMMAND FORM ==
     git pull
 
-EXAMPLES:
+== EXAMPLES ==
     git pull
     git fetch origin main
 
-COMMON OPERATIONS:
+Updates the current branch. git-fetch commits from remote version of current
+branch; then merge those changes.
+
+git pull does a [[git-fetch]] and then a [[git-merge]]
+
+== COMMON OPERATIONS ==
     git pull        # pull everything merge if required
                     # almost dangerously easy with no option
 
-    git fetch <REMOTE> [<BRANCH>]
-                    # download REMOTE commits on BRANCH
-                    # Default all REMOTE branches

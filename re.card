@@ -1,30 +1,34 @@
 = RegEx Syntax: =
-[[grep]] is aliased to pcregrep, [[sed]] is aliased to gsed
+[[grep]] is aliased to pcre2grep, [[sed]] is aliased to gsed
 
 = regex flavours =
-Perl~=pcregrep~=python != gsed
+Perl~=pcre2grep~=python != gsed
 gsed & ERE DO NOT have lazy qualifiers - *? +?
 gsed & ERE DO have groups; ^(.*)pad\1
 
 [[pdfgrep]] is ERE by default, -P flag makes pcre
 
-== syntax reminder ==
-pcre/ERE: .()*+?{}[]|^$ are MAGIC when UNESCAPED
-gsed: only .*[]^$ are MAGIC by default (-E option makes ERE)
+== MAGIC ==
+=== pcre/ERE ===
+MAGIC .()*+?{}[]|^$
+
+=== gsed ===
+MAGIC .*[]^$
+(-E option makes ERE)
     
-=== precedence ===
+== precedence ==
 repetition > concatenation > alternation
 
-=== classes ===
+== classes ==
 [kjh] OR [a-z] any of range
 [^kjh] any not in range
 
-=== quantifiers ===
+== quantifiers ==
 ? + *        # ? = {0,1}   + = {1,}   * = {0,}
 {n}  n times
 {n,} n or more
 {n, m} n to m times (inclusive)
-
+==== PCRE/grep only ====
 question mark after quantifier makes non-greedy
 {n,m}? ?? +? *?
 
@@ -40,8 +44,6 @@ question mark after quantifier makes non-greedy
 \b    # edge of a word.
 \B    # not edge of a word.
 \R    # any newline sequence (CR|LF|CRLF)
-
-*man pcresyntax* for full description
 
 === ERE ONLY shorthands (GSED) ===
 \< \> begin/end of word
