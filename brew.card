@@ -9,7 +9,7 @@
 	brew leaves         # list all packages that have no dependents
 	brew outdated       # show all updateable formulae - informative
 	brew install <PACKAGE>
-	brew uninstall <PACKAGE>
+	brew uninstall <PACKAGE> == brew rm <PACKAGE>
 
 	brew link <PACKAGE>      # symlinks from PATHy locations to brew Cellars
 	brew unlink <PACKAGE>    # unsymlinks from PATHy locations to brew Cellars

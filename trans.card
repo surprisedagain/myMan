@@ -1,0 +1,15 @@
+= trans =
+== COMMAND FORM ==
+    trans [-b -T]  [FROM:TO] 'text'
+
+== EXAMPLE ==
+    trans -T
+    trans -b en:no 'text to be translated'
+
+== OPTIONS ==
+	-T     # Print refernce table of supported languages and their codes
+	-b     # brief mode: show the translation only
+	
+	-identify    # Show the identified langauge of the text
+	-verbose     # DEFAULT: show original, translation, phonetic, alternative
+		           and definition if text is a single word

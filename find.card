@@ -3,18 +3,23 @@
     find [-L] <BASEPATH> ... [criteria]
 
 == EXAMPLE ==
-    find -not ????
+    find ~/zb.musicArchive/ -samefile ~/za.syncedMusic/thisSong.opus
 
 == OPTIONS ==
-	-[i]name <PAT>     # <PAT> may contain glob style wildcards * ? [xyz]
-	-[i]path <PAT>     # as per -name but whole path is tested for match
-	-[i]regex <PAT>    # regex BRE by default. -E makes ERE - see [[re]]
+	-L         # follow symlinks (default is to use links properties)
+	-print0    # if output is piped to xargs this fixes separator
+                 use "xargs -0" flag
+=== criteria ===
+	-[i]name  <GLOB>    # <PAT> may contain glob style wildcards * ? [xyz]
+	-[i]path  <GLOB>    # as per -name but whole path is tested for match
+	-[i]regex <RE>      # regex BRE by default. -E makes ERE - see [[re]]
 				         i is for case Insensitive
 
 	-depth <n>         # depth of file from start path is exactly n
 	-mindepth <n>        in base directory = depth 1
 	-maxdepth <n>
 	
+	-newer <FILE>       # modified more recently than <FILE> (ALSO anewer cnewer)
 	-samefile <FILE>    # is hardlink to <FILE>
 	-links <N>		    # has less/exact/more than -n/n/+n links
 
@@ -23,9 +28,6 @@
 	-ctime <n>[smhdw]    # changed (contents changed)
 
 	-ls        # give long listing of matches not just names
-	-L         # follow symlinks (default is to use links properties)
-	-print0    # if output is piped to xargs this fixes separator
-                 use "xargs -0" flag
 
 	-exec <CMD> [arg ...] ;
                # '{}' is path to current file. ';' is non-negotiable

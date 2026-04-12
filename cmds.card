@@ -1,17 +1,26 @@
 = Commands =
-[[brew]], [[cut]], [[find]], [[git]], [[man]], [[pdb]], [[pdfgrep]],
-[[printf]], [[screen]], [[sed]], [[venv]], [[vim]], [[whence]], [[zsh]]
-[[sort]], head, tail, column
-[[yt-dlp]]
+[[brew]], [[git]], [[man]], 
+[[find]], [[zmv]], [[rsync]]
+[[zsh]], [[kill]], [[whence]],
+[[vim]], [[printf]], [[sed]], [[pdfgrep]], [[grep]]
+[[sort]], [[cut]], uniq, head, tail, column, paste, basename, dirname
+[[ffmpeg]], [[yt-dlp]], [[trans]]
+[[venv]], [[pdb]],
 
 == new ==
-trans = google translate > trans [fr[:]to] <q>plain text</q>
 rdfind, newsboat, lynx
 
 == useful/obscure/forgettable ==
-	zmv           # super cool glob + numbered groups renamer
-				    '*(input-group1)xyz' 'outputName$1Included'
 	~~btop~~, ??ncdu
+
+	skimnotes
+        Usage: skimnotes get [-format skim|archive|plist|text|rtf] PDF_FILE [NOTES_FILE|-]
+        example: skimnotes get -format text XYZ.pdf -
+
+        Reads Skim, Text, or RTF notes from extended attributes of PDF_FILE or
+        the contents of PDF bundle PDF_FILE and writes to NOTES_FILE or standard
+        output.  Uses notes file with same base name as PDF_FILE if SKIM_FILE is
+        not provided.  Reads Skim notes when no format is provided.
 
 	hash <CMD>    # to force macOS to re-evaluate which CMD it will use
                     (required when macOS has cached an old location for <CMD>
@@ -26,7 +35,7 @@ rdfind, newsboat, lynx
 	file <NAME>    # identify the type and encoding (e.g. utf-8) of a file
 
 	stat (~=readlink); sort, uniq, tail
-	rsync, ncdu, tag, mkfifo, mkfifo
+	[[rsync]], tag, mkfifo
  
 	[[curl]] -O URL, wget URL
 	
@@ -38,7 +47,7 @@ rdfind, newsboat, lynx
                       # conflicting name
 == job control ==
 	ps, [[kill]], killall, pkill, fg, bg, C-z (suspend current process)
-    See [[zsh#JOB CONTROL]]
+See [[zsh#JOB CONTROL]]
 	
 == for zsh scripts ==
 	xargs         # convert output to arguments to next command

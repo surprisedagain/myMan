@@ -16,4 +16,3 @@ git pull does a [[git-fetch]] and then a [[git-merge]]
 == COMMON OPERATIONS ==
     git pull        # pull everything merge if required
                     # almost dangerously easy with no option
-

@@ -6,6 +6,7 @@
 
 == EXAMPLE ==
     kill -term %4
+    kill -18 %2
     kill %1
     kill -info 6891
 
@@ -16,7 +17,7 @@
 === related commands ===
 C-z, C-c, C-\
 jobs, fg %N, bg %N, ps, nohup, disown
-pkill (kill with  grep pattern)
+pkill (kill with grep pattern)
 killall (despite the name kill processes with exact name)
 
 === signals ===

@@ -3,7 +3,7 @@
     zmv [OPTIONS] <MatchingPattern> <NewNamePattern>
 
 == EXAMPLE ==
-    zmv 'this*(here*)that([anyone]*other)' '$1and${2}'
+    zmv 'this*(here*)that?([anyone]*other)' '$1and${2}'
     count=1 ; zmv '(* )_*.jpg' '$1-$( (count++)).jpg'
 
 == OPTIONS ==
@@ -14,8 +14,8 @@
 	-L     # make symbolic links pointing to original
 	-H     # make hard links
 
-== Patterns ==
-	${(L)1}    # match group 1 - converted to lower case
-	${(U)1}    # match group 1 - converted to UPPER case
-	${(C)1}    # match group 1 - converted to Capitalise first letter
+== tricks ==
+	${(L)1}    # group 1 - converted to lower case
+	${(U)1}    # group 1 - converted to UPPER case
+	${(C)1}    # group 1 - converted to Capitalise first letter
 These are zsh parameter expansion flags

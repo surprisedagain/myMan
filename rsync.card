@@ -1,0 +1,30 @@
+= rsync =
+== COMMAND FORM ==
+    rsync [-r ????] <SOURCE> <DESTINATION>
+
+== EXAMPLE ==
+     rsync -vrt --delete --progress --stats ~/zb.musicArchive/ /Volumes/nathanBackup/musicArchive.bkp/
+
+=== NOTE: ===
+/ after source is significant
+~~source/~~ transfers all the files (/directories if recursive) *IN* sourse
+~~source~~ transfers *source* itself - adding a probably unwanted folder level
+/ after destination makes no difference unless destination does not already
+exist. dest/ = create folder dest and put backup inside it. dest = create backup
+called dest.
+
+== OPTIONS ==
+	-z    # compress
+	-r    # recursive
+	-n    # dry run - do not modify destination
+	-L    # copy targets of symbolic links not the link itself
+	-H    # attempt to preserve hard links within transferred files
+	-l    # transfer symbolic links
+
+	--delete    # delete files in backup that are not found in source
+	--exclude
+	--progress
+	
+	-f     # search manpage titles and short descriptions for <COMMAND_NAME>
+	-k     # search manpages for <COMMAND_NAME> treated as BRE RegEx
+	-a     # list All the manpages for <COMMAND_NAME>

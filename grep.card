@@ -22,6 +22,8 @@
 	-o      # only print the matching part of the line
 	-l      # only print names of files containing matches
 	-L      # only print names of files NOT containing matches
+	-q      # quiet - print nothing. Of use in scripts that use the return value
+
 	-v      # invert match - show non-matching lines
 	-a      # force treat as ascii - something about binary files?
 	-r      # recursive if passed directory recurse into it

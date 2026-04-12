@@ -1,0 +1,21 @@
+= git status =
+== COMMAND FORM ==
+    git status
+    gs = git status -s | sort -r
+
+== EXAMPLE ==
+    gs
+
+== OPTIONS ==
+    --ignored  # show ignored files in output
+	
+== OUTPUT ==
+    M = modified
+    T = file type changed (regular file, symbolic link or submodule)
+    A = added
+    D = deleted
+    R = renamed
+    C = copied (if config option status.renames is set to "copies")
+    U = updated but unmerged
+    ?? untracked
+    !! = ignored (only if --ignored option given)

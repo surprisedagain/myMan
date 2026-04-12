@@ -1,10 +1,9 @@
-= VIM =
 [[#COMMANDS]], [[#movements]], [[#selections]]
 [[#Register specials/tricks]]
 [[#RegEx]], [[#magic]]
 
 === custom commands ===
-:M :WH :wb<n> :chb :odiff
+:M :H :wb<n> :chb :odiff :S :T
 zC zO zD zF
 F1     # buflist choose (not used enough to keep)
 F2     # compile/execute/produce
@@ -64,7 +63,7 @@ zO / zC / zD    # Open/Close/Delete ALL folds
 w b e ge | 0 ^ $ f t ; , 'm "m
 { } ( )
 
-<n>gg <n>G    # gOTO line <n> - gg default 1 G default $
+<n>gg <n>G    # gOTO line <n> - gg default 1 - G default $
 <n>|          # column <n> (default 0) in current line
 [w ]w         # next/prev instance of word under cursor
 [s ]s         # prev/next misspelt word
@@ -89,7 +88,7 @@ it | at    # inside | all html tag containing cursor
 V          # select whole line - can [count]V
 
 == Completion ==
-^n ^p    # forward/backwards search words in this file 
+^n / ^p    # forward/backwards search words in this file 
 ^x^o     # omni (clever?) completion
 ^x^f     # filename completion !!
 ^x^n     # search forward in this file or another buffer
@@ -98,6 +97,7 @@ V          # select whole line - can [count]V
 
 <Ctrl-n> or <Ctrl-p> to cycle through options
 <Ctrl-e> to end without inserting completion
+<Ctrl-y> to accept completion (or just continue typing)
 
 == Register tricks==
 <ctrl-r><ctrl-w>      # paste word under cursor.  often -> commandline
@@ -194,7 +194,7 @@ vimdiff file1 file2
 do              # VIMDIFF - obtain difference FROM other file
 dp              # VIMDIFF - push difference TO other file
 
-:Tdiff                        # diff with original file to show unsaved changes
+:odiff                        # diff with original file to show unsaved changes
 :diffs[plit] <OTHER_FILE>     # my normal way into vimdiff
 :vert[ical] diffpatch <DIFF_FILE>
 
