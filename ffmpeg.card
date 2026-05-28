@@ -28,6 +28,7 @@ Timing accurate, slower processing, re-encoding required
 	-q:a [0-9]         # quality for mp3 VBR - 0 Highest quality 5 Medium-low
 	-map a             # only map audio streams from input to output
 	-f FORMAT          # Force output format
+	-application voip    # favour improved speech intelligibility
 
 === Position / Duration === 
 argument format can be any of:
@@ -58,6 +59,3 @@ Opus always uses VBR by default - use -b:a only
   - Some operations require re-encoding (e.g., changing codecs, filters).
   - Use `-map` to control which streams are included in output.
   - test with `-t` or `-ss` options to avoid processing long files unnecessarily during development.
-
-=== online manual ===
-https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#usage-and-options

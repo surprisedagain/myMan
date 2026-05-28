@@ -13,7 +13,7 @@ rdfind, newsboat, lynx
 == useful/obscure/forgettable ==
 	~~btop~~, ??ncdu
 
-	skimnotes
+	skimnotes (see also my script [[sn]])
         Usage: skimnotes get [-format skim|archive|plist|text|rtf] PDF_FILE [NOTES_FILE|-]
         example: skimnotes get -format text XYZ.pdf -
 

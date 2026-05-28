@@ -35,8 +35,8 @@
 == MAGIC ==
 .()*+?{}[]|^$ are MAGIC
 
-== character types ==
-\w word constituent.
+== character classes ==
+\w word constituent. [A-za-z0-9_]
 \W non-word-constituent.
 
 \s whitespace
@@ -61,7 +61,7 @@ character types such as <q>\s</q> still work
 opening [ can be special if interpretable as start of posix class
 
 === posix named set ===
-PCRE ONLY SUPPORTS named sets *within character classes*
+ONLY PCRE SUPPORTS named sets *within character classes*
 [:^alnum:]    NOT letters and digits
 [:alnum:]     letters and digits
 [:alpha:]     letters

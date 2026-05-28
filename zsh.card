@@ -50,8 +50,8 @@ can be applied to shell parameter expansions, history expansions and globs
 	c    # search $PATH and give full path to file ONLY RESOLVES COMMANDS
 	h    # head = path segment before final /
 	t    # tail = path segment after final /
-	e    # extension = after last . (after final / if present)
-	r    # root filename before last . (after final / if present)
+	e    # extension = after last . in tail
+	r    # root = whole path before last . in tail
 	l    # convert to lower case
 	u    # convert to upper case
 	
@@ -72,6 +72,9 @@ NOT modifying expansions but selecting what shall be expanded
 (F)      # non-empty directories
 (@)      # symbolic links
 (D)      # will match .files without requiring .pattern
+(l+-N)    # only files with +/-/ greater/less/exact link count
+(a/m/c[Mwhms]+-N)     # only files accessed/modified/created more/less/exact time ago
+(o[Llamc])    # sort by size/links/access/nodification/creation time
 (.,@)    # EITHER . or @ (comma separated) 
 
 == GLOB MAGIC ==
@@ -98,6 +101,12 @@ ${~name}    forces glob expansion of the value of name
 $'\n'       allows <q>C-style escapes</q> - poorly documented
 
 ${(L/U/C)PARAM}    lower case / upper case / capitalise
+
+== REDIRECTION ==
+>file <file 2>&1 &>/dev/null
+>>append <<<expandthis <<XYZ (heredoc until XYZ line)
+>(process) <(process)
+
 
 == JOB CONTROL ==
 C-z     # Temporary SToP a process

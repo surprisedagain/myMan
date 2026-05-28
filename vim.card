@@ -1,5 +1,5 @@
 [[#COMMANDS]], [[#movements]], [[#selections]]
-[[#Register specials/tricks]]
+[[#Register tricks]]
 [[#RegEx]], [[#magic]]
 
 === custom commands ===
@@ -117,7 +117,7 @@ V          # select whole line - can [count]V
     \+ \? \( \) \| \{3,7} \< \>
 
 ==== in replacement ====
-	& ~ \r \t \0 \1 .. \9 \u \U \l \L \E
+    & ~ \r \t \0 \1 .. \9 \u \U \l \L \E
 	&           # whole of match (== \0)           
 	~           # whole of previous substitute
 	\l | \u     # next character lowercase | uppercase
@@ -142,7 +142,7 @@ V          # select whole line - can [count]V
 
 ==== Range Examples ====
     4,7 | 4;+3 | 't,$-5 | .+2,27 | /pat/,/pat2/-1 | ?pat?;+5 | %
-    
+    /pat/ = next matching line     ?pat? = previous matching line
 ==== Flag Examples ====
     c    # confirm each action (e.g. replacement)
     g    # all occurences in each line not just first 
@@ -152,6 +152,7 @@ V          # select whole line - can [count]V
 
 === Other Ex Commands ===
 :<r>g/match_pattern/command     # e.g. g/pattern/normal Ifred
+                                  (also s/././ on each matching line)
 
 :<r>d [x]       # delete to register x
 :<r> norm i#    # insert # at start of each line
