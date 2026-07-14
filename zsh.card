@@ -3,7 +3,9 @@
 [[#MODIFIERS]], [[#GLOB QUALIFIERS]]
 
 === fresh tips ===
-ctrl-l - clear screen better than clear
+^l - clear screen better than clear
+^b - push current commandline onto stack - pop after next command
+^n - run help on command ("mm <FIRSTWORD>")
 ^old^new - repeat previous command with new substituted for (first) old
 
 == HISTORY EXPANSION ==
@@ -14,6 +16,7 @@ ctrl-l - clear screen better than clear
 === pattern ===
 	!-<N>:<ARGUMENT>:<MOD>     # Nth previous command - ARGUMENT 0 is command name
 
+my .zshrc auto inserts - in !-<N> (so automatically makes relative not absolute)
 ==== special patterns ====
     !!          # previous command
     !#          # current command (useful to repeat arguments)
@@ -85,6 +88,7 @@ NOT modifying expansions but selecting what shall be expanded
 
 === extended glob ===
 ^notHere/file (zero or more)# (one or more)## 12#3 this~but not this
+^ high precedence; ~ low precedence
 
 setopt EXTENDED_GLOB is now in my .zshrc (so not active in non-interactive shells)
 

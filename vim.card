@@ -1,15 +1,20 @@
+= VIM =
 [[#COMMANDS]], [[#movements]], [[#selections]]
-[[#Register tricks]]
+[[#Register specials/tricks]]
 [[#RegEx]], [[#magic]]
 
 === custom commands ===
-:M :H :wb<n> :chb :odiff :S :T
+:H     # print help section of ~/.vimrc
+:M :R :W    # myMan Retab toggle hardWrap
+:C :LS :Q :wb<n> :odiff    # close hidden / short LIST / Quit to scratch
+:G :GC :FC       # grep all files(/Cards) F for Fixed string
 zC zO zD zF
-F1     # buflist choose (not used enough to keep)
-F2     # compile/execute/produce
-F10    # GitGutter toggle
-F11    # show folds toggle
-F12    # relative numbers toggle
+F1     # compile/execute/produce
+F9     # toggle spelling highlight
+F10    # toggle show folds
+F11    # toggle GitGutter
+F12    # toggle relative line numbers
+i_<C-,> i_<C-.>    # indent/outdent
 
 == COMMANDS ==
 i I a A o O c C d D y Y p P
@@ -28,14 +33,11 @@ ctrl-]         # during insert triggers abbreviation ctrl-v before space
 
 zf[old], zo[pen], zc[lose], zd[elete]
 zO / zC / zD    # Open/Close/Delete ALL folds
-:set fdc=4      # show folds in foldcolumn - toggle with <F11>
 
 :cw             # open quickfixwindow
 :gr[ep]         # matches will populate quickfix - uses pcre2grep! yay! see [[re]]
-:ret[ab]        # replace tabs with spaces over range
-	:R          # nathan defined retab
 :term[inal]     # !!!!!! open terminal (consider ctrl-z instead)
-	:mterm :fterm
+	:sterm
 :find **/filename *
 
 :wa             # Write All
@@ -48,22 +50,11 @@ zO / zC / zD    # Open/Close/Delete ALL folds
 :vsp <filename>
 :helpg[rep]     # search help files !!!!!!!!
 
-==== custom commands ====
-:Man <cmd>    # open man page
-:M <cmd>      # open personal man page
-:R            # retab specified range
-:W<n>         # write buffer <n>
-:Vsb<n>       # vertical split open buffer
-:Tdiff
-
-:G <pat>      # grep all files in % directory
-:T :S         # grep all .card in % directory
-
 == Movements ==
 w b e ge | 0 ^ $ f t ; , 'm "m
 { } ( )
 
-<n>gg <n>G    # gOTO line <n> - gg default 1 - G default $
+<n>gg <n>G    # gOTO line <n> - gg default 1 G default $
 <n>|          # column <n> (default 0) in current line
 [w ]w         # next/prev instance of word under cursor
 [s ]s         # prev/next misspelt word
@@ -88,7 +79,7 @@ it | at    # inside | all html tag containing cursor
 V          # select whole line - can [count]V
 
 == Completion ==
-^n / ^p    # forward/backwards search words in this file 
+^n ^p    # forward/backwards search words in this file 
 ^x^o     # omni (clever?) completion
 ^x^f     # filename completion !!
 ^x^n     # search forward in this file or another buffer
@@ -97,7 +88,6 @@ V          # select whole line - can [count]V
 
 <Ctrl-n> or <Ctrl-p> to cycle through options
 <Ctrl-e> to end without inserting completion
-<Ctrl-y> to accept completion (or just continue typing)
 
 == Register tricks==
 <ctrl-r><ctrl-w>      # paste word under cursor.  often -> commandline
@@ -112,12 +102,12 @@ V          # select whole line - can [count]V
 
 = RegEx =
 === MAGIC ===
-    . * ^ $ [ ]
+    . * [ ] ^ $
 === NOT MAGIC unless escaped ===
     \+ \? \( \) \| \{3,7} \< \>
 
 ==== in replacement ====
-    & ~ \r \t \0 \1 .. \9 \u \U \l \L \E
+	& ~ \r \t \0 \1 .. \9 \u \U \l \L \E
 	&           # whole of match (== \0)           
 	~           # whole of previous substitute
 	\l | \u     # next character lowercase | uppercase
@@ -142,7 +132,7 @@ V          # select whole line - can [count]V
 
 ==== Range Examples ====
     4,7 | 4;+3 | 't,$-5 | .+2,27 | /pat/,/pat2/-1 | ?pat?;+5 | %
-    /pat/ = next matching line     ?pat? = previous matching line
+    
 ==== Flag Examples ====
     c    # confirm each action (e.g. replacement)
     g    # all occurences in each line not just first 
@@ -152,7 +142,6 @@ V          # select whole line - can [count]V
 
 === Other Ex Commands ===
 :<r>g/match_pattern/command     # e.g. g/pattern/normal Ifred
-                                  (also s/././ on each matching line)
 
 :<r>d [x]       # delete to register x
 :<r> norm i#    # insert # at start of each line
@@ -195,7 +184,7 @@ vimdiff file1 file2
 do              # VIMDIFF - obtain difference FROM other file
 dp              # VIMDIFF - push difference TO other file
 
-:odiff                        # diff with original file to show unsaved changes
+:Tdiff                        # diff with original file to show unsaved changes
 :diffs[plit] <OTHER_FILE>     # my normal way into vimdiff
 :vert[ical] diffpatch <DIFF_FILE>
 

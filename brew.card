@@ -14,6 +14,14 @@
 	brew link <PACKAGE>      # symlinks from PATHy locations to brew Cellars
 	brew unlink <PACKAGE>    # unsymlinks from PATHy locations to brew Cellars
 
+== services ==
+see [[syncthing]] (the only service I currently use)
+brew services list            List all running services.
+brew services start <NAME>    Start Syncthing now and each subsequent log in.
+brew services stop <NAME>     Stop the service and unregister it from launching at login (or boot).
+brew services restart <NAME>   
+brew services info <NAME>   
+brew services cleanup         Remove obsolete launch agents
 
 == other rumoured commands ==
 brew autoremove          Uninstall unnecessary formulae.
@@ -30,25 +38,9 @@ brew list    List all installed formulae.
 brew outdated    List installed formulae that have an updated version available.
 brew pin    Pin a specified formula so that it's not upgraded.
 brew list --pinned    List pinned formulae, or show the version of a given formula.
-brew services list    List all running services.
-brew services stop    Stop the service and unregister it from launching at login (or boot).
 bsoff --all    Stop all started services.
-brew services start    Start the service and register it to launch at login (or boot).
 bson --all    Start all stopped services.
-brew services run    Run the service without registering to launch at login (or boot).
 bsr --all    Run all stopped services.
 brew uninstall --zap    Remove all files associated with a cask.
 
 === notes on recent packages ===
-openjdk@11
-For the system Java wrappers to find this JDK, symlink it with
-  sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
-
-openjdk@11 is keg-only, which means it was not symlinked into /usr/local,
-because this is an alternate version of another formula.
-
-If you need to have openjdk@11 first in your PATH, run:
-  echo 'export PATH="/usr/local/opt/openjdk@11/bin:$PATH"' >> ~/.zshrc
-
-For compilers to find openjdk@11 you may need to set:
-  export CPPFLAGS="-I/usr/local/opt/openjdk@11/include"

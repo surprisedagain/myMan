@@ -44,7 +44,7 @@ Then:
 	ffmpeg -f concat -i files.txt -c copy output.mp4
 
 
-=== .opus quality levels ===
+=== opus quality levels ===
 Opus always uses VBR by default - use -b:a only
 -b:a 48k      # mono speech, audiobooks, podcasts
 -b:a 64k      # stereo speech, soft music or speech+music mixes
@@ -53,6 +53,11 @@ Opus always uses VBR by default - use -b:a only
 -b:a 160k     # excellent music quality, especially for complex sources
 -b:a 192k     # archival music, indistinguishable from lossless for most
 -b:a 256k     # very high quality; rarely needed
+
+==== mp3 equivalents ====
+mp3 320 kbps ~= opus 160–192 kbps
+mp3 256 kbps ~= opus 128–160 kbps
+mp3 192 kbps ~= opus 96–128 kbps
 
 == Notes ==
   - Use `-c copy` to avoid re-encoding when possible.

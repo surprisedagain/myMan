@@ -41,8 +41,8 @@ question mark after quantifier makes non-greedy
 === PCRE ONLY shorthands ===
 \d    # digit
 \D    # non-digit
-\b    # edge of a word.
-\B    # not edge of a word.
+\b    # word boundary
+\B    # not a word boundary
 \R    # any newline sequence (CR|LF|CRLF)
 
 === ERE ONLY shorthands (GSED) ===

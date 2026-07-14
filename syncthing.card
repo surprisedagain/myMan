@@ -1,0 +1,10 @@
+= syncthing =
+[[brew]]
+== COMMANDS ==
+	brew services start syncthing    Start Syncthing now and at subsequent logins.
+	brew services run			     Run the service without registering to launch at login (or boot).
+	brew services stop syncthing     Stops Syncthing now and disables automatic startup.  
+	brew services restart syncthing
+	brew services info syncthing
+	brew services list               Show all Homebrew-managed services and whether they are running.
+	brew services cleanup            Remove obsolete launch agents
